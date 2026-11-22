@@ -20,6 +20,8 @@ jobs:
       cancel-in-progress: false
     permissions:
       contents: write
+    outputs:
+      persisted: ${{ steps.persist.outputs.persisted }}
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
       - id: pending
@@ -72,7 +74,8 @@ jobs:
           stage=emulator-or-score
           if [[ "$PREPARE_OUTCOME" != success ]]; then stage=setup; fi
           python3 mlkit_lab.py error --candidate "$CANDIDATE" --error-stage "$stage"
-      - name: Persist only scored evidence or failure receipt
+      - id: persist
+        name: Persist only scored evidence or failure receipt
         if: always() && steps.pending.outputs.candidate != ''
         run: |
           set -euo pipefail
@@ -85,3 +88,25 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'research: record existing ML Kit pipeline experiment'
           git push origin HEAD:main
+          echo 'persisted=true' >> "$GITHUB_OUTPUT"
+
+  continue:
+    needs: research
+    if: needs.research.result == 'success' && needs.research.outputs.persisted == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    concurrency:
+      group: ocr-research-main
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+          persist-credentials: false
+      - run: python3 -m unittest test_mlkit_next -v
+      - run: python3 mlkit_next.py
+        env:
+          GH_TOKEN: ${{ github.token }}
