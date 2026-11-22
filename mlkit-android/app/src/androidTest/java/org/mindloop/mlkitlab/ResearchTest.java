@@ -3,6 +3,7 @@ package org.mindloop.mlkitlab;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.os.SystemClock;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
@@ -93,10 +94,17 @@ public class ResearchTest {
                             input = InputImage.fromBitmap(gray,0);
                         }
                         Text result = Tasks.await(recognizer.process(input), 30, TimeUnit.SECONDS);
-                        int lines = 0;
-                        for (Text.TextBlock block : result.getTextBlocks()) lines += block.getLines().size();
+                        JSONArray lines = new JSONArray();
+                        for (Text.TextBlock block : result.getTextBlocks()) for (Text.Line line : block.getLines()) {
+                            Rect box = line.getBoundingBox();
+                            assertNotNull("missing line bounds", box);
+                            if (line.getText().trim().isEmpty()) continue;
+                            lines.put(new JSONObject().put("text", line.getText()).put("box", new JSONArray(new int[]{box.left, box.top, box.right, box.bottom})));
+                        }
+                        Runtime memory = Runtime.getRuntime();
                         rows.put(new JSONObject().put("id", item.getString("id")).put("variant", item.getString("variant"))
-                            .put("pipeline", pipeline).put("text", result.getText()).put("line_count", lines)
+                            .put("pipeline", pipeline).put("text", result.getText()).put("line_count", lines.length()).put("lines", lines)
+                            .put("heap_used_bytes", memory.totalMemory()-memory.freeMemory())
                             .put("elapsed_ms", SystemClock.elapsedRealtime()-start).put("status", "ok"));
                     } finally { if (gray != null) gray.recycle(); }
                 }

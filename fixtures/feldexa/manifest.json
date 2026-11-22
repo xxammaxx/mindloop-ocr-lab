@@ -1,0 +1,882 @@
+{
+  "schema": 1,
+  "source": {
+    "repository": "xxammaxx/Feldexa_2.0",
+    "ref": "be606263d0dfc9673e905a91245ecf8d55515332",
+    "path": "tools/corpus/synthetic",
+    "provenance": "synthetic; rights cleared, no personal data; labels from assets/fixtures/catalog.json"
+  },
+  "forms": [
+    {
+      "id": "sf-001",
+      "sha256": "22c939ccc788f24868a115e5f635d1c0e0618d760b28518a4bd5e039f8caa038",
+      "pages": [
+        {
+          "index": 0,
+          "labels": [
+            "Familienname",
+            "Vorname",
+            "Geburtsdatum",
+            "Geburtsort",
+            "Staatsangehörigkeit",
+            "Straße und Hausnummer",
+            "Postleitzahl",
+            "Ort",
+            "weiblich",
+            "männlich",
+            "divers",
+            "Datum",
+            "Unterschrift"
+          ],
+          "fields": [
+            {
+              "id": "p0-familienname",
+              "type": "text",
+              "label": "Familienname",
+              "rect": {
+                "xPt": 190,
+                "yPt": 148,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-vorname",
+              "type": "text",
+              "label": "Vorname",
+              "rect": {
+                "xPt": 190,
+                "yPt": 182,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-geburtsdatum",
+              "type": "date",
+              "label": "Geburtsdatum",
+              "rect": {
+                "xPt": 190,
+                "yPt": 216,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-geburtsort",
+              "type": "text",
+              "label": "Geburtsort",
+              "rect": {
+                "xPt": 190,
+                "yPt": 250,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-staatsangehoerigkeit",
+              "type": "text",
+              "label": "Staatsangehörigkeit",
+              "rect": {
+                "xPt": 190,
+                "yPt": 284,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-strasse",
+              "type": "text",
+              "label": "Straße und Hausnummer",
+              "rect": {
+                "xPt": 190,
+                "yPt": 354,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-plz",
+              "type": "text",
+              "label": "Postleitzahl",
+              "rect": {
+                "xPt": 190,
+                "yPt": 388,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-ort",
+              "type": "text",
+              "label": "Ort",
+              "rect": {
+                "xPt": 190,
+                "yPt": 422,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-geschlecht-weiblich",
+              "type": "checkbox",
+              "label": "weiblich",
+              "rect": {
+                "xPt": 190,
+                "yPt": 502,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p0-geschlecht-maennlich",
+              "type": "checkbox",
+              "label": "männlich",
+              "rect": {
+                "xPt": 300,
+                "yPt": 502,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p0-geschlecht-divers",
+              "type": "checkbox",
+              "label": "divers",
+              "rect": {
+                "xPt": 410,
+                "yPt": 502,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p0-datum",
+              "type": "date",
+              "label": "Datum",
+              "rect": {
+                "xPt": 190,
+                "yPt": 548,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-unterschrift",
+              "type": "signature",
+              "label": "Unterschrift",
+              "rect": {
+                "xPt": 190,
+                "yPt": 612,
+                "widthPt": 300,
+                "heightPt": 30
+              }
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "labels": [
+            "Begründung",
+            "Betrag 1",
+            "Betrag 2",
+            "Betrag 3",
+            "Betrag 4",
+            "Barzahlung",
+            "Überweisung",
+            "Ort",
+            "Datum",
+            "Unterschrift"
+          ],
+          "fields": [
+            {
+              "id": "p1-grund",
+              "type": "multiline",
+              "label": "Begründung",
+              "rect": {
+                "xPt": 190,
+                "yPt": 152,
+                "widthPt": 348.58,
+                "heightPt": 76
+              }
+            },
+            {
+              "id": "p1-betrag-1",
+              "type": "number",
+              "label": "Betrag 1",
+              "rect": {
+                "xPt": 427,
+                "yPt": 316,
+                "widthPt": 104,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-betrag-2",
+              "type": "number",
+              "label": "Betrag 2",
+              "rect": {
+                "xPt": 427,
+                "yPt": 342,
+                "widthPt": 104,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-betrag-3",
+              "type": "number",
+              "label": "Betrag 3",
+              "rect": {
+                "xPt": 427,
+                "yPt": 368,
+                "widthPt": 104,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-betrag-4",
+              "type": "number",
+              "label": "Betrag 4",
+              "rect": {
+                "xPt": 427,
+                "yPt": 394,
+                "widthPt": 104,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-zahlung-bar",
+              "type": "checkbox",
+              "label": "Barzahlung",
+              "rect": {
+                "xPt": 190,
+                "yPt": 480,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p1-zahlung-ueberweisung",
+              "type": "checkbox",
+              "label": "Überweisung",
+              "rect": {
+                "xPt": 330,
+                "yPt": 480,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p1-ort",
+              "type": "text",
+              "label": "Ort",
+              "rect": {
+                "xPt": 190,
+                "yPt": 554,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-datum",
+              "type": "date",
+              "label": "Datum",
+              "rect": {
+                "xPt": 190,
+                "yPt": 588,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p1-unterschrift",
+              "type": "signature",
+              "label": "Unterschrift",
+              "rect": {
+                "xPt": 190,
+                "yPt": 626,
+                "widthPt": 300,
+                "heightPt": 30
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-002",
+      "sha256": "bd8a0f7b231b0d5ba494b816350144999534c6dbffb151a14dc175f9fe802025",
+      "pages": [
+        {
+          "index": 0,
+          "labels": [
+            "Aktenzeichen"
+          ],
+          "fields": [
+            {
+              "id": "p0-aktenzeichen",
+              "type": "text",
+              "label": "Aktenzeichen",
+              "rect": {
+                "xPt": 190,
+                "yPt": 360,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "labels": [
+            "Datum"
+          ],
+          "fields": [
+            {
+              "id": "p1-datum",
+              "type": "date",
+              "label": "Datum",
+              "rect": {
+                "xPt": 190,
+                "yPt": 360,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "labels": [
+            "Kopie gewünscht"
+          ],
+          "fields": [
+            {
+              "id": "p2-kopie",
+              "type": "checkbox",
+              "label": "Kopie gewünscht",
+              "rect": {
+                "xPt": 190,
+                "yPt": 360,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "labels": [
+            "Telefon"
+          ],
+          "fields": [
+            {
+              "id": "p3-telefon",
+              "type": "text",
+              "label": "Telefon",
+              "rect": {
+                "xPt": 190,
+                "yPt": 360,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "labels": [
+            "Unterschrift"
+          ],
+          "fields": [
+            {
+              "id": "p4-unterschrift",
+              "type": "signature",
+              "label": "Unterschrift",
+              "rect": {
+                "xPt": 190,
+                "yPt": 386,
+                "widthPt": 300,
+                "heightPt": 30
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-003",
+      "sha256": "c19afcf6f86ed21a422426c5f01613bb9643b097d0facad3b3349f9873e4ea4f",
+      "pages": [
+        {
+          "index": 0,
+          "labels": [
+            "Feld oben links",
+            "Feld oben rechts",
+            "Feld unten links",
+            "Feld unten rechts",
+            "Mitte"
+          ],
+          "fields": [
+            {
+              "id": "p0-feld-oben-links",
+              "type": "text",
+              "label": "Feld oben links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p0-feld-oben-rechts",
+              "type": "text",
+              "label": "Feld oben rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p0-feld-unten-links",
+              "type": "text",
+              "label": "Feld unten links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 749.89,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p0-feld-unten-rechts",
+              "type": "text",
+              "label": "Feld unten rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 749.89,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p0-mitte",
+              "type": "checkbox",
+              "label": "Mitte",
+              "rect": {
+                "xPt": 292.64,
+                "yPt": 420.945,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        },
+        {
+          "index": 1,
+          "labels": [
+            "Feld oben links",
+            "Feld oben rechts",
+            "Feld unten links",
+            "Feld unten rechts",
+            "Mitte"
+          ],
+          "fields": [
+            {
+              "id": "p1-feld-oben-links",
+              "type": "text",
+              "label": "Feld oben links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p1-feld-oben-rechts",
+              "type": "text",
+              "label": "Feld oben rechts",
+              "rect": {
+                "xPt": 665.89,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p1-feld-unten-links",
+              "type": "text",
+              "label": "Feld unten links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 503.28,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p1-feld-unten-rechts",
+              "type": "text",
+              "label": "Feld unten rechts",
+              "rect": {
+                "xPt": 665.89,
+                "yPt": 503.28,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p1-mitte",
+              "type": "checkbox",
+              "label": "Mitte",
+              "rect": {
+                "xPt": 415.945,
+                "yPt": 297.64,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        },
+        {
+          "index": 2,
+          "labels": [
+            "Feld oben links",
+            "Feld oben rechts",
+            "Feld unten links",
+            "Feld unten rechts",
+            "Mitte"
+          ],
+          "fields": [
+            {
+              "id": "p2-feld-oben-links",
+              "type": "text",
+              "label": "Feld oben links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p2-feld-oben-rechts",
+              "type": "text",
+              "label": "Feld oben rechts",
+              "rect": {
+                "xPt": 665.89,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p2-feld-unten-links",
+              "type": "text",
+              "label": "Feld unten links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 503.28,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p2-feld-unten-rechts",
+              "type": "text",
+              "label": "Feld unten rechts",
+              "rect": {
+                "xPt": 665.89,
+                "yPt": 503.28,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p2-mitte",
+              "type": "checkbox",
+              "label": "Mitte",
+              "rect": {
+                "xPt": 415.945,
+                "yPt": 297.64,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        },
+        {
+          "index": 3,
+          "labels": [
+            "Feld oben links",
+            "Feld oben rechts",
+            "Feld unten links",
+            "Feld unten rechts",
+            "Mitte"
+          ],
+          "fields": [
+            {
+              "id": "p3-feld-oben-links",
+              "type": "text",
+              "label": "Feld oben links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p3-feld-oben-rechts",
+              "type": "text",
+              "label": "Feld oben rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p3-feld-unten-links",
+              "type": "text",
+              "label": "Feld unten links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 749.89,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p3-feld-unten-rechts",
+              "type": "text",
+              "label": "Feld unten rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 749.89,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p3-mitte",
+              "type": "checkbox",
+              "label": "Mitte",
+              "rect": {
+                "xPt": 292.64,
+                "yPt": 420.945,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        },
+        {
+          "index": 4,
+          "labels": [
+            "Feld oben links",
+            "Feld oben rechts",
+            "Feld unten links",
+            "Feld unten rechts",
+            "Mitte"
+          ],
+          "fields": [
+            {
+              "id": "p4-feld-oben-links",
+              "type": "text",
+              "label": "Feld oben links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p4-feld-oben-rechts",
+              "type": "text",
+              "label": "Feld oben rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 96,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p4-feld-unten-links",
+              "type": "text",
+              "label": "Feld unten links",
+              "rect": {
+                "xPt": 36,
+                "yPt": 327.53,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p4-feld-unten-rechts",
+              "type": "text",
+              "label": "Feld unten rechts",
+              "rect": {
+                "xPt": 419.28,
+                "yPt": 327.53,
+                "widthPt": 140,
+                "heightPt": 24
+              }
+            },
+            {
+              "id": "p4-mitte",
+              "type": "checkbox",
+              "label": "Mitte",
+              "rect": {
+                "xPt": 292.64,
+                "yPt": 209.765,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sf-004",
+      "sha256": "009c3babd2013e13fad9ef5977ec3d4c1d5842a52da0718e4ac06e3ff39d171e",
+      "pages": [
+        {
+          "index": 0,
+          "labels": [
+            "Straße und Hausnummer",
+            "Größe in cm",
+            "Betrag in €",
+            "Geburtsdatum",
+            "Telefon",
+            "Langtext (Überlaufprüfung)",
+            "Begründung / Äußerung",
+            "Einverständnis erteilt",
+            "Kopie gewünscht",
+            "Unterschrift"
+          ],
+          "fields": [
+            {
+              "id": "p0-strasse",
+              "type": "text",
+              "label": "Straße und Hausnummer",
+              "rect": {
+                "xPt": 190,
+                "yPt": 150,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-groesse",
+              "type": "number",
+              "label": "Größe in cm",
+              "rect": {
+                "xPt": 190,
+                "yPt": 186,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-betrag",
+              "type": "number",
+              "label": "Betrag in €",
+              "rect": {
+                "xPt": 190,
+                "yPt": 222,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-geburtsdatum",
+              "type": "date",
+              "label": "Geburtsdatum",
+              "rect": {
+                "xPt": 190,
+                "yPt": 258,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-telefon",
+              "type": "text",
+              "label": "Telefon",
+              "rect": {
+                "xPt": 190,
+                "yPt": 294,
+                "widthPt": 300,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-langtext",
+              "type": "text",
+              "label": "Langtext (Überlaufprüfung)",
+              "rect": {
+                "xPt": 260,
+                "yPt": 330,
+                "widthPt": 90,
+                "heightPt": 18
+              }
+            },
+            {
+              "id": "p0-anmerkung",
+              "type": "multiline",
+              "label": "Begründung / Äußerung",
+              "rect": {
+                "xPt": 190,
+                "yPt": 414,
+                "widthPt": 348.58,
+                "heightPt": 66
+              }
+            },
+            {
+              "id": "p0-einverstaendnis",
+              "type": "checkbox",
+              "label": "Einverständnis erteilt",
+              "rect": {
+                "xPt": 190,
+                "yPt": 530,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p0-kopie",
+              "type": "checkbox",
+              "label": "Kopie gewünscht",
+              "rect": {
+                "xPt": 370,
+                "yPt": 530,
+                "widthPt": 10,
+                "heightPt": 10
+              }
+            },
+            {
+              "id": "p0-unterschrift",
+              "type": "signature",
+              "label": "Unterschrift",
+              "rect": {
+                "xPt": 190,
+                "yPt": 582,
+                "widthPt": 300,
+                "heightPt": 30
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

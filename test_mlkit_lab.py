@@ -12,8 +12,8 @@ def observation(variant, path, id, text):
 
 class MlKitLabTests(unittest.TestCase):
     def test_catalog_advances_and_does_not_repeat_rejections(self):
-        self.assertEqual(m.pending([]), 'contrast1')
-        self.assertEqual(m.pending([{'candidate': 'contrast1', 'status': 'REJECTED_DEV'}]), 'sharpen')
+        self.assertEqual(m.pending([]), 'contrast1-fusion')
+        self.assertEqual(m.pending([{'candidate': 'contrast1', 'status': 'REJECTED_DEV'}]), 'contrast1-fusion')
         self.assertIsNone(m.pending([{'candidate': key} for key in m.CANDIDATES]))
         self.assertIsNone(m.pending([{'candidate': 'contrast1', 'status': 'INCONCLUSIVE_INFRA'}]))
 

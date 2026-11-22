@@ -2,7 +2,7 @@ name: ML Kit OCR research
 on:
   push:
     branches: [main]
-    paths: ['mlkit_lab.py', 'test_mlkit_lab.py', 'mlkit-android/**', 'fixtures/**', '.github/workflows/mlkit.yml']
+    paths: ['mlkit_lab.py', 'mlkit_fusion.py', 'feldexa_forms.py', 'test_mlkit_lab.py', 'test_mlkit_fusion.py', 'mlkit-android/**', 'fixtures/**', '.github/workflows/mlkit.yml']
   workflow_dispatch:
   schedule:
     - cron: '37 2 * * *'
@@ -28,7 +28,7 @@ jobs:
         run: |
           candidate=$(python3 mlkit_lab.py pending)
           case "$candidate" in
-            contrast1|sharpen|contrast|threshold|scale2) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
+            contrast1-fusion) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
             EXHAUSTED|BLOCKED) echo "$candidate" ;;
             *) exit 1 ;;
           esac
