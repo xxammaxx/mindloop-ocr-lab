@@ -1,0 +1,5549 @@
+{
+  "complete": true,
+  "context": "0b5c5be643fed16420aacb6677552660e7e908ea279dabff8f81b43f061a2f8a",
+  "environment": {
+    "engine": "com.google.mlkit:text-recognition:16.0.1",
+    "lang": "latin",
+    "scope": "android-emulator"
+  },
+  "records": [
+    {
+      "app_statuses": {
+        "feldexa-gray-bitmap": "REJECTED_DEV",
+        "umliva-nv21": "REJECTED_DEV"
+      },
+      "candidate": "contrast1-fusion",
+      "config": {
+        "fusion": "spatial-add-only",
+        "max_source_side": 2400,
+        "passes": 2,
+        "preprocess": "contrast1",
+        "sdk": "com.google.mlkit:text-recognition:16.0.1"
+      },
+      "diagnostics": [
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 9370944,
+          "conflicts": 0,
+          "id": "dev-0",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 11664352
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 10361824,
+          "conflicts": 1,
+          "id": "dev-0",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4691728
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 6022928,
+          "conflicts": 0,
+          "id": "dev-1",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 8247056
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 6977296,
+          "conflicts": 0,
+          "id": "dev-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 9201424
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 10012432,
+          "conflicts": 0,
+          "id": "dev-2",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4286224
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 10610448,
+          "conflicts": 1,
+          "id": "dev-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4917008
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 5691152,
+          "conflicts": 0,
+          "id": "dev-3",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 7063312
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 6289168,
+          "conflicts": 0,
+          "id": "dev-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 7694096
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 4265744,
+          "conflicts": 3,
+          "id": "dev-4",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 5670672
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 4896528,
+          "conflicts": 3,
+          "id": "dev-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 6268688
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 7534352,
+          "conflicts": 0,
+          "id": "validation-0",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 6575888
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 5277456,
+          "conflicts": 0,
+          "id": "validation-0",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 7530256
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 8795920,
+          "conflicts": 0,
+          "id": "validation-1",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4744976
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 9750288,
+          "conflicts": 0,
+          "id": "validation-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 5699344
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 6477584,
+          "conflicts": 1,
+          "id": "validation-2",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 7857936
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 7079696,
+          "conflicts": 1,
+          "id": "validation-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 8460048
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 4269840,
+          "conflicts": 1,
+          "id": "validation-3",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 5711632
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 4937488,
+          "conflicts": 2,
+          "id": "validation-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 6309648
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 7087888,
+          "conflicts": 1,
+          "id": "validation-4",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4282128
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 7685904,
+          "conflicts": 1,
+          "id": "validation-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 4912912
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26576656,
+          "conflicts": 0,
+          "id": "feldexa-sf-001-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26601232
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 20473616,
+          "conflicts": 0,
+          "id": "feldexa-sf-001-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43558672
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26724112,
+          "conflicts": 0,
+          "id": "feldexa-sf-001-2",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 26720016
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43783952,
+          "conflicts": 0,
+          "id": "feldexa-sf-001-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 43747088
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26883856,
+          "conflicts": 2,
+          "id": "feldexa-sf-002-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26867472
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44017424,
+          "conflicts": 1,
+          "id": "feldexa-sf-002-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44033808
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26920720,
+          "conflicts": 3,
+          "id": "feldexa-sf-002-2",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26904336
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44054288,
+          "conflicts": 1,
+          "id": "feldexa-sf-002-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44005136
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26924816,
+          "conflicts": 3,
+          "id": "feldexa-sf-002-3",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26973968
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44091152,
+          "conflicts": 2,
+          "id": "feldexa-sf-002-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44107536
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 27027216,
+          "conflicts": 1,
+          "id": "feldexa-sf-002-4",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26978064
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44193552,
+          "conflicts": 2,
+          "id": "feldexa-sf-002-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44144400
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 27031312,
+          "conflicts": 2,
+          "id": "feldexa-sf-002-5",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 27047696
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44164880,
+          "conflicts": 1,
+          "id": "feldexa-sf-002-5",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44181264
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26609424,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26584848
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43251472,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43226896
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26597136,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-2",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26605328
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43239184,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43247376
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26617616,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-3",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26625808
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43259664,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43300624
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26638096,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-4",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26646288
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43345680,
+          "conflicts": 0,
+          "id": "feldexa-sf-003-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43288336
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 26588944,
+          "conflicts": 2,
+          "id": "feldexa-sf-003-5",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 26597136
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 43181840,
+          "conflicts": 2,
+          "id": "feldexa-sf-003-5",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 43190032
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 27174672,
+          "conflicts": 0,
+          "id": "feldexa-sf-004-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 27232016
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 44443408,
+          "conflicts": 0,
+          "id": "feldexa-sf-004-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 44500752
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 22968080,
+          "conflicts": 2,
+          "id": "statement-01-photo-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 22996752
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 37127952,
+          "conflicts": 2,
+          "id": "statement-01-photo-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 37156624
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 27621136,
+          "conflicts": 6,
+          "id": "statement-01-scan-1",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 27617040
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 45102864,
+          "conflicts": 3,
+          "id": "statement-01-scan-1",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 45098768
+        },
+        {
+          "added_lines": 2,
+          "baseline_heap_snapshot_bytes": 23426832,
+          "conflicts": 13,
+          "id": "statement-01-photo-2",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 23533328
+        },
+        {
+          "added_lines": 1,
+          "baseline_heap_snapshot_bytes": 37934864,
+          "conflicts": 20,
+          "id": "statement-01-photo-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 38041360
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 28141328,
+          "conflicts": 4,
+          "id": "statement-01-scan-2",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 28219152
+        },
+        {
+          "added_lines": 1,
+          "baseline_heap_snapshot_bytes": 46003984,
+          "conflicts": 2,
+          "id": "statement-01-scan-2",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 46049040
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 24565520,
+          "conflicts": 19,
+          "id": "statement-01-photo-3",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 24618768
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 39913232,
+          "conflicts": 13,
+          "id": "statement-01-photo-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 39933712
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 29341456,
+          "conflicts": 10,
+          "id": "statement-01-scan-3",
+          "pipeline": "umliva-nv21",
+          "retry": false,
+          "second_heap_snapshot_bytes": 29390608
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 48043792,
+          "conflicts": 10,
+          "id": "statement-01-scan-3",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": false,
+          "second_heap_snapshot_bytes": 48060176
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 25892624,
+          "conflicts": 37,
+          "id": "statement-01-photo-4",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 25982736
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 42219280,
+          "conflicts": 29,
+          "id": "statement-01-photo-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 42284816
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 30770960,
+          "conflicts": 28,
+          "id": "statement-01-scan-4",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 30824208
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 50427664,
+          "conflicts": 19,
+          "id": "statement-01-scan-4",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 50480912
+        },
+        {
+          "added_lines": 1,
+          "baseline_heap_snapshot_bytes": 25397008,
+          "conflicts": 18,
+          "id": "statement-01-photo-5",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 25429776
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 40675088,
+          "conflicts": 22,
+          "id": "statement-01-photo-5",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 40679184
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 30099216,
+          "conflicts": 6,
+          "id": "statement-01-scan-5",
+          "pipeline": "umliva-nv21",
+          "retry": true,
+          "second_heap_snapshot_bytes": 30168848
+        },
+        {
+          "added_lines": 0,
+          "baseline_heap_snapshot_bytes": 48772880,
+          "conflicts": 9,
+          "id": "statement-01-scan-5",
+          "pipeline": "feldexa-gray-bitmap",
+          "retry": true,
+          "second_heap_snapshot_bytes": 48809744
+        }
+      ],
+      "rows": [
+        {
+          "chars": 91,
+          "edits": 0,
+          "elapsed_ms": 2916,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 2322,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-0",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 0,
+          "elapsed_ms": 5306,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 4629,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-0",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 2264,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 1862,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 3994,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 3623,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 1914,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 1897,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 3866,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 91,
+          "edits": 1,
+          "elapsed_ms": 3811,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "dev-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 2053,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 2004,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 4130,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 84,
+          "edits": 0,
+          "elapsed_ms": 3989,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "dev-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 97,
+          "edits": 5,
+          "elapsed_ms": 2006,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "dev-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "chars": 97,
+          "edits": 6,
+          "elapsed_ms": 1937,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "dev-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "chars": 97,
+          "edits": 5,
+          "elapsed_ms": 3957,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "dev-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "dev",
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 97,
+          "edits": 6,
+          "elapsed_ms": 3989,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "dev-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "dev",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 89,
+          "edits": 0,
+          "elapsed_ms": 1749,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 89,
+          "edits": 0,
+          "elapsed_ms": 1701,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 89,
+          "edits": 0,
+          "elapsed_ms": 3458,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 89,
+          "edits": 0,
+          "elapsed_ms": 3471,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-0",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 82,
+          "edits": 0,
+          "elapsed_ms": 1687,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 82,
+          "edits": 0,
+          "elapsed_ms": 1642,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 82,
+          "edits": 0,
+          "elapsed_ms": 3317,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 82,
+          "edits": 0,
+          "elapsed_ms": 3285,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-1",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 86,
+          "edits": 1,
+          "elapsed_ms": 1909,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 86,
+          "edits": 1,
+          "elapsed_ms": 1906,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 86,
+          "edits": 1,
+          "elapsed_ms": 3773,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 86,
+          "edits": 1,
+          "elapsed_ms": 3823,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-2",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 82,
+          "edits": 2,
+          "elapsed_ms": 2062,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-3",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 82,
+          "edits": 1,
+          "elapsed_ms": 2058,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "baseline"
+        },
+        {
+          "chars": 82,
+          "edits": 2,
+          "elapsed_ms": 4042,
+          "hits": [
+            1,
+            2
+          ],
+          "id": "validation-3",
+          "line_count": 4,
+          "matched": 2,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 82,
+          "edits": 1,
+          "elapsed_ms": 4035,
+          "hits": [
+            0,
+            1,
+            2
+          ],
+          "id": "validation-3",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 3,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 91,
+          "edits": 5,
+          "elapsed_ms": 1969,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "validation-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 7,
+          "elapsed_ms": 2137,
+          "hits": [
+            1,
+            5,
+            6
+          ],
+          "id": "validation-4",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "chars": 91,
+          "edits": 5,
+          "elapsed_ms": 4056,
+          "hits": [
+            1,
+            4,
+            5,
+            6
+          ],
+          "id": "validation-4",
+          "line_count": 4,
+          "matched": 4,
+          "modality": "validation",
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "chars": 91,
+          "edits": 7,
+          "elapsed_ms": 4214,
+          "hits": [
+            1,
+            5,
+            6
+          ],
+          "id": "validation-4",
+          "line_count": 4,
+          "matched": 3,
+          "modality": "validation",
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3679,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "id": "feldexa-sf-001-1",
+          "line_count": 25,
+          "matched": 13,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 13,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3708,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "id": "feldexa-sf-001-1",
+          "line_count": 25,
+          "matched": 13,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 13,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7338,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "id": "feldexa-sf-001-1",
+          "line_count": 25,
+          "matched": 13,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 13,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7253,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "id": "feldexa-sf-001-1",
+          "line_count": 25,
+          "matched": 13,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 13,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3791,
+          "hits": [
+            0,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-001-2",
+          "line_count": 28,
+          "matched": 6,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3776,
+          "hits": [
+            0,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-001-2",
+          "line_count": 28,
+          "matched": 6,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7528,
+          "hits": [
+            0,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-001-2",
+          "line_count": 28,
+          "matched": 6,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7397,
+          "hits": [
+            0,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-001-2",
+          "line_count": 28,
+          "matched": 6,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3832,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-1",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3802,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-1",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7774,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-1",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7609,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-1",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3699,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-2",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3744,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-2",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7447,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-2",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7491,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-2",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3864,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-3",
+          "line_count": 17,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3871,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-3",
+          "line_count": 17,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7695,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-3",
+          "line_count": 17,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7593,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-3",
+          "line_count": 17,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3750,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-4",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3742,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-4",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7539,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-4",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7514,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-4",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 3716,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-5",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3780,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-5",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7502,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-5",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7531,
+          "hits": [
+            0
+          ],
+          "id": "feldexa-sf-002-5",
+          "line_count": 16,
+          "matched": 1,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 1,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 2881,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-1",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 2800,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-1",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5653,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-1",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5527,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-1",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 2958,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-2",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 2654,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-2",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5785,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-2",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5375,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-2",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 2849,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-3",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 2899,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-3",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5731,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-3",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5708,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-3",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 2788,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-4",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 2766,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-4",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5565,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-4",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5496,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-4",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 2866,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-5",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3325,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-5",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5787,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-5",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 6213,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "id": "feldexa-sf-003-5",
+          "line_count": 10,
+          "matched": 5,
+          "modality": "feldexa-form",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 5,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 4070,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-004-1",
+          "line_count": 25,
+          "matched": 9,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 3971,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-004-1",
+          "line_count": 25,
+          "matched": 10,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 8145,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-004-1",
+          "line_count": 25,
+          "matched": 9,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7952,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "feldexa-sf-004-1",
+          "line_count": 25,
+          "matched": 10,
+          "modality": "feldexa-form",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 4511,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-photo-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 4542,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-photo-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 9002,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-photo-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 9037,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-photo-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 4826,
+          "hits": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-scan-1",
+          "line_count": 25,
+          "matched": 6,
+          "modality": "scan",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 4499,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-scan-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "scan",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 9551,
+          "hits": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-scan-1",
+          "line_count": 25,
+          "matched": 6,
+          "modality": "scan",
+          "page": 1,
+          "pipeline": "umliva-nv21",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 9165,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "id": "statement-01-scan-1",
+          "line_count": 25,
+          "matched": 7,
+          "modality": "scan",
+          "page": 1,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 7,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5607,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-2",
+          "line_count": 88,
+          "matched": 10,
+          "modality": "photo",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5620,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9
+          ],
+          "id": "statement-01-photo-2",
+          "line_count": 88,
+          "matched": 9,
+          "modality": "photo",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 11192,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-2",
+          "line_count": 90,
+          "matched": 10,
+          "modality": "photo",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 11151,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            9
+          ],
+          "id": "statement-01-photo-2",
+          "line_count": 89,
+          "matched": 9,
+          "modality": "photo",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 5778,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-2",
+          "line_count": 92,
+          "matched": 10,
+          "modality": "scan",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 5593,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-2",
+          "line_count": 89,
+          "matched": 10,
+          "modality": "scan",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 11420,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-2",
+          "line_count": 92,
+          "matched": 10,
+          "modality": "scan",
+          "page": 2,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 11157,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-2",
+          "line_count": 90,
+          "matched": 10,
+          "modality": "scan",
+          "page": 2,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7744,
+          "hits": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-photo-3",
+          "line_count": 96,
+          "matched": 7,
+          "modality": "photo",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 9,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7466,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-photo-3",
+          "line_count": 96,
+          "matched": 9,
+          "modality": "photo",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 9,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 15301,
+          "hits": [
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-photo-3",
+          "line_count": 96,
+          "matched": 7,
+          "modality": "photo",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 9,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 15065,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-photo-3",
+          "line_count": 96,
+          "matched": 9,
+          "modality": "photo",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 9,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7582,
+          "hits": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-scan-3",
+          "line_count": 97,
+          "matched": 8,
+          "modality": "scan",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 9,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7420,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-scan-3",
+          "line_count": 100,
+          "matched": 9,
+          "modality": "scan",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 9,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 15207,
+          "hits": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-scan-3",
+          "line_count": 97,
+          "matched": 8,
+          "modality": "scan",
+          "page": 3,
+          "pipeline": "umliva-nv21",
+          "total": 9,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 14966,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "id": "statement-01-scan-3",
+          "line_count": 100,
+          "matched": 9,
+          "modality": "scan",
+          "page": 3,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 9,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 9563,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-4",
+          "line_count": 132,
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 9237,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-4",
+          "line_count": 132,
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 18713,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-4",
+          "line_count": 132,
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 18371,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-photo-4",
+          "line_count": 132,
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 9716,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-4",
+          "line_count": 135,
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 9499,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-4",
+          "line_count": 136,
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 19325,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-4",
+          "line_count": 135,
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "pipeline": "umliva-nv21",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 19030,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "id": "statement-01-scan-4",
+          "line_count": 136,
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 10,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7194,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-photo-5",
+          "line_count": 69,
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 8,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7080,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-photo-5",
+          "line_count": 68,
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 8,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 14209,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-photo-5",
+          "line_count": 70,
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 8,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 14163,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-photo-5",
+          "line_count": 68,
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 8,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 7207,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-scan-5",
+          "line_count": 69,
+          "matched": 8,
+          "modality": "scan",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 8,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 7214,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-scan-5",
+          "line_count": 70,
+          "matched": 8,
+          "modality": "scan",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 8,
+          "variant": "baseline"
+        },
+        {
+          "elapsed_ms": 14416,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-scan-5",
+          "line_count": 69,
+          "matched": 8,
+          "modality": "scan",
+          "page": 5,
+          "pipeline": "umliva-nv21",
+          "total": 8,
+          "variant": "contrast1-fusion"
+        },
+        {
+          "elapsed_ms": 14312,
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "id": "statement-01-scan-5",
+          "line_count": 70,
+          "matched": 8,
+          "modality": "scan",
+          "page": 5,
+          "pipeline": "feldexa-gray-bitmap",
+          "total": 8,
+          "variant": "contrast1-fusion"
+        }
+      ],
+      "runtime": {
+        "aar_hashes": {
+          "common-18.11.0.aar": "66408a08dbb2465687ff5dd0c8f6410b56549ce3ecf449d9096f3712282131d0",
+          "text-recognition-16.0.1.aar": "da753265d02479a8cfe4dbf891ba7d189248e7c8430b6f72bd4d532c757a69b3",
+          "text-recognition-bundled-common-17.0.0.aar": "fb1d4e26d69125659b6f5a94f03cce145544b0116807d04333335a9775636e05",
+          "vision-common-17.3.0.aar": "c0085ca5fba00f11529c0a83b12851ea6c599bbcc8affd927e914b29a743459f",
+          "vision-interfaces-16.3.0.aar": "8f0192a26d01b728a01a15a620d829fff7095822822694438a93127c04cb16fb"
+        },
+        "abi": "x86_64",
+        "api": "35",
+        "fingerprint": "google/sdk_gphone64_x86_64/emu64xa:15/AE3A.240806.043/12960925:userdebug/dev-keys",
+        "sdk": "com.google.mlkit:text-recognition:16.0.1"
+      },
+      "selective_replay": {
+        "app_statuses": {
+          "feldexa-gray-bitmap": "REJECTED_DEV",
+          "umliva-nv21": "REJECTED_DEV"
+        },
+        "candidate": "contrast1-fusion",
+        "config": {
+          "fusion": "spatial-add-only",
+          "max_source_side": 2400,
+          "passes": "conditional replay",
+          "preprocess": "contrast1",
+          "sdk": "com.google.mlkit:text-recognition:16.0.1",
+          "trigger": "at most 4 lines or short/replacement-character line"
+        },
+        "evidence_limit": "Counterfactual replay of measured passes, not direct adaptive runtime; elapsed_ms is summed OCR time, not end-to-end; heap snapshots not peak.",
+        "rows": [
+          {
+            "chars": 91,
+            "edits": 0,
+            "elapsed_ms": 2916,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 2322,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-0",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 0,
+            "elapsed_ms": 5306,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 4629,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-0",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 2264,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 1862,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 3994,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 3623,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 1914,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 1897,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 3866,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 91,
+            "edits": 1,
+            "elapsed_ms": 3811,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "dev-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 2053,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 2004,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 4130,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 84,
+            "edits": 0,
+            "elapsed_ms": 3989,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "dev-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 97,
+            "edits": 5,
+            "elapsed_ms": 2006,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "dev-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "chars": 97,
+            "edits": 6,
+            "elapsed_ms": 1937,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "dev-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "chars": 97,
+            "edits": 5,
+            "elapsed_ms": 3957,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "dev-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "dev",
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 97,
+            "edits": 6,
+            "elapsed_ms": 3989,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "dev-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "dev",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 89,
+            "edits": 0,
+            "elapsed_ms": 1749,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 89,
+            "edits": 0,
+            "elapsed_ms": 1701,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 89,
+            "edits": 0,
+            "elapsed_ms": 3458,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 89,
+            "edits": 0,
+            "elapsed_ms": 3471,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-0",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 82,
+            "edits": 0,
+            "elapsed_ms": 1687,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 82,
+            "edits": 0,
+            "elapsed_ms": 1642,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 82,
+            "edits": 0,
+            "elapsed_ms": 3317,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 82,
+            "edits": 0,
+            "elapsed_ms": 3285,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-1",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 86,
+            "edits": 1,
+            "elapsed_ms": 1909,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 86,
+            "edits": 1,
+            "elapsed_ms": 1906,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 86,
+            "edits": 1,
+            "elapsed_ms": 3773,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 86,
+            "edits": 1,
+            "elapsed_ms": 3823,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-2",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 82,
+            "edits": 2,
+            "elapsed_ms": 2062,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-3",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 82,
+            "edits": 1,
+            "elapsed_ms": 2058,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "baseline"
+          },
+          {
+            "chars": 82,
+            "edits": 2,
+            "elapsed_ms": 4042,
+            "hits": [
+              1,
+              2
+            ],
+            "id": "validation-3",
+            "line_count": 4,
+            "matched": 2,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 82,
+            "edits": 1,
+            "elapsed_ms": 4035,
+            "hits": [
+              0,
+              1,
+              2
+            ],
+            "id": "validation-3",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 3,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 91,
+            "edits": 5,
+            "elapsed_ms": 1969,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "validation-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 7,
+            "elapsed_ms": 2137,
+            "hits": [
+              1,
+              5,
+              6
+            ],
+            "id": "validation-4",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "chars": 91,
+            "edits": 5,
+            "elapsed_ms": 4056,
+            "hits": [
+              1,
+              4,
+              5,
+              6
+            ],
+            "id": "validation-4",
+            "line_count": 4,
+            "matched": 4,
+            "modality": "validation",
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "chars": 91,
+            "edits": 7,
+            "elapsed_ms": 4214,
+            "hits": [
+              1,
+              5,
+              6
+            ],
+            "id": "validation-4",
+            "line_count": 4,
+            "matched": 3,
+            "modality": "validation",
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3679,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "id": "feldexa-sf-001-1",
+            "line_count": 25,
+            "matched": 13,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 13,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3708,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "id": "feldexa-sf-001-1",
+            "line_count": 25,
+            "matched": 13,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 13,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3679,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "id": "feldexa-sf-001-1",
+            "line_count": 25,
+            "matched": 13,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 13,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3708,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ],
+            "id": "feldexa-sf-001-1",
+            "line_count": 25,
+            "matched": 13,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 13,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3791,
+            "hits": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-001-2",
+            "line_count": 28,
+            "matched": 6,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3776,
+            "hits": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-001-2",
+            "line_count": 28,
+            "matched": 6,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7528,
+            "hits": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-001-2",
+            "line_count": 28,
+            "matched": 6,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7397,
+            "hits": [
+              0,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-001-2",
+            "line_count": 28,
+            "matched": 6,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3832,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-1",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3802,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-1",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3832,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-1",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3802,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-1",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3699,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-2",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3744,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-2",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3699,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-2",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3744,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-2",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3864,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-3",
+            "line_count": 17,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3871,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-3",
+            "line_count": 17,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3864,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-3",
+            "line_count": 17,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3871,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-3",
+            "line_count": 17,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3750,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-4",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3742,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-4",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3750,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-4",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3742,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-4",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3716,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-5",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3780,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-5",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3716,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-5",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3780,
+            "hits": [
+              0
+            ],
+            "id": "feldexa-sf-002-5",
+            "line_count": 16,
+            "matched": 1,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 1,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2881,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-1",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2800,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-1",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2881,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-1",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2800,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-1",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2958,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-2",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2654,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-2",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2958,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-2",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2654,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-2",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2849,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-3",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2899,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-3",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2849,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-3",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2899,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-3",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2788,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-4",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2766,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-4",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2788,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-4",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2766,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-4",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 2866,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-5",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3325,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-5",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 2866,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-5",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3325,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ],
+            "id": "feldexa-sf-003-5",
+            "line_count": 10,
+            "matched": 5,
+            "modality": "feldexa-form",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 5,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 4070,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-004-1",
+            "line_count": 25,
+            "matched": 9,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 3971,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-004-1",
+            "line_count": 25,
+            "matched": 10,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 4070,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-004-1",
+            "line_count": 25,
+            "matched": 9,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 3971,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "feldexa-sf-004-1",
+            "line_count": 25,
+            "matched": 10,
+            "modality": "feldexa-form",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 4511,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-photo-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "photo",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 4542,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-photo-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "photo",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 4511,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-photo-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "photo",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 4542,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-photo-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "photo",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 4826,
+            "hits": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-scan-1",
+            "line_count": 25,
+            "matched": 6,
+            "modality": "scan",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 4499,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-scan-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "scan",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 4826,
+            "hits": [
+              0,
+              1,
+              2,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-scan-1",
+            "line_count": 25,
+            "matched": 6,
+            "modality": "scan",
+            "page": 1,
+            "pipeline": "umliva-nv21",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 4499,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+            "id": "statement-01-scan-1",
+            "line_count": 25,
+            "matched": 7,
+            "modality": "scan",
+            "page": 1,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 7,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 5607,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-2",
+            "line_count": 88,
+            "matched": 10,
+            "modality": "photo",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 5620,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9
+            ],
+            "id": "statement-01-photo-2",
+            "line_count": 88,
+            "matched": 9,
+            "modality": "photo",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 11192,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-2",
+            "line_count": 90,
+            "matched": 10,
+            "modality": "photo",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 11151,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              9
+            ],
+            "id": "statement-01-photo-2",
+            "line_count": 89,
+            "matched": 9,
+            "modality": "photo",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 5778,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-2",
+            "line_count": 92,
+            "matched": 10,
+            "modality": "scan",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 5593,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-2",
+            "line_count": 89,
+            "matched": 10,
+            "modality": "scan",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 11420,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-2",
+            "line_count": 92,
+            "matched": 10,
+            "modality": "scan",
+            "page": 2,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 11157,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-2",
+            "line_count": 90,
+            "matched": 10,
+            "modality": "scan",
+            "page": 2,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7744,
+            "hits": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-photo-3",
+            "line_count": 96,
+            "matched": 7,
+            "modality": "photo",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 9,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7466,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-photo-3",
+            "line_count": 96,
+            "matched": 9,
+            "modality": "photo",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 9,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7744,
+            "hits": [
+              1,
+              2,
+              3,
+              4,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-photo-3",
+            "line_count": 96,
+            "matched": 7,
+            "modality": "photo",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 9,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7466,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-photo-3",
+            "line_count": 96,
+            "matched": 9,
+            "modality": "photo",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 9,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7582,
+            "hits": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-scan-3",
+            "line_count": 97,
+            "matched": 8,
+            "modality": "scan",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 9,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7420,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-scan-3",
+            "line_count": 100,
+            "matched": 9,
+            "modality": "scan",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 9,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7582,
+            "hits": [
+              0,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-scan-3",
+            "line_count": 97,
+            "matched": 8,
+            "modality": "scan",
+            "page": 3,
+            "pipeline": "umliva-nv21",
+            "total": 9,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7420,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ],
+            "id": "statement-01-scan-3",
+            "line_count": 100,
+            "matched": 9,
+            "modality": "scan",
+            "page": 3,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 9,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 9563,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-4",
+            "line_count": 132,
+            "matched": 10,
+            "modality": "photo",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 9237,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-4",
+            "line_count": 132,
+            "matched": 10,
+            "modality": "photo",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 18713,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-4",
+            "line_count": 132,
+            "matched": 10,
+            "modality": "photo",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 18371,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-photo-4",
+            "line_count": 132,
+            "matched": 10,
+            "modality": "photo",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 9716,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-4",
+            "line_count": 135,
+            "matched": 10,
+            "modality": "scan",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 9499,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-4",
+            "line_count": 136,
+            "matched": 10,
+            "modality": "scan",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 19325,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-4",
+            "line_count": 135,
+            "matched": 10,
+            "modality": "scan",
+            "page": 4,
+            "pipeline": "umliva-nv21",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 19030,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ],
+            "id": "statement-01-scan-4",
+            "line_count": 136,
+            "matched": 10,
+            "modality": "scan",
+            "page": 4,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 10,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7194,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-photo-5",
+            "line_count": 69,
+            "matched": 8,
+            "modality": "photo",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 8,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7080,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-photo-5",
+            "line_count": 68,
+            "matched": 8,
+            "modality": "photo",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 8,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 14209,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-photo-5",
+            "line_count": 70,
+            "matched": 8,
+            "modality": "photo",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 8,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 14163,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-photo-5",
+            "line_count": 68,
+            "matched": 8,
+            "modality": "photo",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 8,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 7207,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-scan-5",
+            "line_count": 69,
+            "matched": 8,
+            "modality": "scan",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 8,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 7214,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-scan-5",
+            "line_count": 70,
+            "matched": 8,
+            "modality": "scan",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 8,
+            "variant": "baseline"
+          },
+          {
+            "elapsed_ms": 14416,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-scan-5",
+            "line_count": 69,
+            "matched": 8,
+            "modality": "scan",
+            "page": 5,
+            "pipeline": "umliva-nv21",
+            "total": 8,
+            "variant": "contrast1-fusion"
+          },
+          {
+            "elapsed_ms": 14312,
+            "hits": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "id": "statement-01-scan-5",
+            "line_count": 70,
+            "matched": 8,
+            "modality": "scan",
+            "page": 5,
+            "pipeline": "feldexa-gray-bitmap",
+            "total": 8,
+            "variant": "contrast1-fusion"
+          }
+        ],
+        "status": "REJECTED_DEV"
+      },
+      "status": "REJECTED_DEV"
+    }
+  ],
+  "schema": 1
+}
