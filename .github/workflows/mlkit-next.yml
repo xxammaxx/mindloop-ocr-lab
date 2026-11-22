@@ -1,0 +1,40 @@
+name: Continue ML Kit OCR research
+on:
+  workflow_run:
+    workflows: ['ML Kit OCR research']
+    types: [completed]
+    branches: [main]
+  push:
+    branches: [main]
+    paths: ['.github/workflows/mlkit-next.yml', 'mlkit_next.py', 'test_mlkit_next.py']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  continue:
+    if: >-
+      github.repository == 'xxammaxx/mindloop-ocr-lab' &&
+      ((github.event_name == 'workflow_run' &&
+        github.event.workflow_run.conclusion == 'success' &&
+        github.event.workflow_run.head_branch == 'main' &&
+        github.event.workflow_run.head_repository.full_name == github.repository) ||
+       (github.event_name != 'workflow_run' && github.ref == 'refs/heads/main'))
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    concurrency:
+      group: ocr-research-main
+      cancel-in-progress: false
+    permissions:
+      contents: read
+      actions: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+          persist-credentials: false
+      - run: python3 -m unittest test_mlkit_next -v
+      - run: python3 mlkit_next.py
+        env:
+          GH_TOKEN: ${{ github.token }}
