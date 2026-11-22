@@ -1,0 +1,87 @@
+name: ML Kit OCR research
+on:
+  push:
+    branches: [main]
+    paths: ['mlkit_lab.py', 'test_mlkit_lab.py', 'mlkit-android/**', 'fixtures/**', '.github/workflows/mlkit.yml']
+  workflow_dispatch:
+  schedule:
+    - cron: '37 2 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    concurrency:
+      group: ocr-research-main
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - id: pending
+        run: |
+          candidate=$(python3 mlkit_lab.py pending)
+          case "$candidate" in
+            contrast1|sharpen|contrast|threshold|scale2) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
+            EXHAUSTED|BLOCKED) echo "$candidate" ;;
+            *) exit 1 ;;
+          esac
+      - id: prepare
+        if: steps.pending.outputs.candidate != ''
+        env:
+          CANDIDATE: ${{ steps.pending.outputs.candidate }}
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-pil fonts-dejavu-core poppler-utils
+          (cd fixtures && sha256sum -c SHA256SUMS)
+          /usr/bin/python3 -m unittest -v
+          /usr/bin/python3 mlkit_lab.py prepare --candidate "$CANDIDATE" --assets mlkit-android/app/src/androidTest/assets --truth "$RUNNER_TEMP/mlkit-truth.json"
+          curl --fail --location --max-time 180 --output "$RUNNER_TEMP/gradle.zip" https://services.gradle.org/distributions/gradle-8.13-bin.zip
+          echo "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
+          echo "JAVA_HOME=$JAVA_HOME_17_X64" >> "$GITHUB_ENV"
+          test -c /dev/kvm
+          sudo chmod a+rw /dev/kvm
+      - id: experiment
+        if: steps.pending.outputs.candidate != ''
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+        env:
+          CANDIDATE: ${{ steps.pending.outputs.candidate }}
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          cores: 2
+          ram-size: 3072M
+          heap-size: 512M
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          disable-animations: true
+          script: bash mlkit-android/run-research.sh
+      - name: Record failed setup or experiment without retrying unchanged context
+        if: failure() && steps.pending.outputs.candidate != ''
+        env:
+          CANDIDATE: ${{ steps.pending.outputs.candidate }}
+          PREPARE_OUTCOME: ${{ steps.prepare.outcome }}
+        run: |
+          stage=emulator-or-score
+          if [[ "$PREPARE_OUTCOME" != success ]]; then stage=setup; fi
+          python3 mlkit_lab.py error --candidate "$CANDIDATE" --error-stage "$stage"
+      - name: Persist only scored evidence or failure receipt
+        if: always() && steps.pending.outputs.candidate != ''
+        run: |
+          set -euo pipefail
+          git add -- results/
+          if git diff --cached --quiet; then exit 0; fi
+          git diff --cached --name-only | while IFS= read -r path; do
+            [[ "$path" =~ ^results/[0-9a-f]{64}/ledger\.json$ ]] || exit 1
+          done
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'research: record existing ML Kit pipeline experiment'
+          git push origin HEAD:main

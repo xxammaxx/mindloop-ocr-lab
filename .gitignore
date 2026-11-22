@@ -1,3 +1,6 @@
 __pycache__/
 *.pyc
 *.tmp
+mlkit-android/.gradle/
+mlkit-android/app/build/
+mlkit-android/app/src/androidTest/assets/

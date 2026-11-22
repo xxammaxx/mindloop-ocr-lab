@@ -6,8 +6,6 @@ on:
   pull_request:
     paths: ['lab.py', 'test_lab.py', 'document_benchmark.py', 'test_document_benchmark.py', 'fixtures/**', '.github/workflows/ocr.yml']
   workflow_dispatch:
-  schedule:
-    - cron: '37 2 * * *'
 
 permissions:
   contents: read
