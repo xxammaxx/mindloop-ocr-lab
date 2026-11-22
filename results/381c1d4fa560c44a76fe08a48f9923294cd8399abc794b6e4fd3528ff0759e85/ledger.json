@@ -1,0 +1,837 @@
+{
+  "baseline": {
+    "config": {
+      "id": "baseline",
+      "preprocess": "gray",
+      "psm": 6
+    },
+    "dev": {
+      "cer": 0.011185682326621925,
+      "cohorts": {
+        "form": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        },
+        "statement": {
+          "cer": 0.017921146953405017,
+          "critical_accuracy": 0.6923076923076923
+        }
+      },
+      "critical_accuracy": 0.7894736842105263,
+      "rows": [
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-0"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-1"
+        },
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-2"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-3"
+        },
+        {
+          "chars": 97,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 7,
+          "edits": 5,
+          "id": "dev-4"
+        }
+      ]
+    },
+    "paired": [
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "matched": 7,
+        "modality": "scan",
+        "page": 1,
+        "total": 7
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "matched": 7,
+        "modality": "photo",
+        "page": 1,
+        "total": 7
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "matched": 9,
+        "modality": "scan",
+        "page": 2,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "matched": 7,
+        "modality": "photo",
+        "page": 2,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "matched": 9,
+        "modality": "scan",
+        "page": 3,
+        "total": 9
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "matched": 7,
+        "modality": "photo",
+        "page": 3,
+        "total": 9
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "matched": 9,
+        "modality": "scan",
+        "page": 4,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "matched": 10,
+        "modality": "photo",
+        "page": 4,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "matched": 7,
+        "modality": "scan",
+        "page": 5,
+        "total": 8
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "matched": 8,
+        "modality": "photo",
+        "page": 5,
+        "total": 8
+      }
+    ],
+    "validation": {
+      "cer": 0.011627906976744186,
+      "cohorts": {
+        "form": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        },
+        "statement": {
+          "cer": 0.018796992481203006,
+          "critical_accuracy": 0.6923076923076923
+        }
+      },
+      "critical_accuracy": 0.7894736842105263,
+      "rows": [
+        {
+          "chars": 89,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-0"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-1"
+        },
+        {
+          "chars": 86,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-2"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-3"
+        },
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 7,
+          "edits": 5,
+          "id": "validation-4"
+        }
+      ]
+    }
+  },
+  "complete": false,
+  "context": "381c1d4fa560c44a76fe08a48f9923294cd8399abc794b6e4fd3528ff0759e85",
+  "environment": {
+    "benchmark_sha256": "a52640ce8a3ce5acd8f7e13477b79d5e2ceb62ed93c675bd3c5544c5df33d5fb",
+    "code_sha256": "8e5f90cd75689a4541a03e1030a52b3f1526cf7e2de47c80092188f5b76999aa",
+    "corpus_sha256": "eb829484568199517d4a9879ecfe9cfc09cc0f5b2beb12a8c629f33c63601d00",
+    "engine": "tesseract 5.3.4",
+    "font_sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+    "lang": "deu",
+    "model_sha256": "19d219bbb6672c869d20a9636c6816a81eb9a71796cb93ebe0cb1530e2cdb22d",
+    "pdfimages": "pdfimages version 24.02.0",
+    "pillow": "10.2.0"
+  },
+  "records": [
+    {
+      "candidate": "contrast1-psm6",
+      "config": {
+        "id": "contrast1-psm6",
+        "preprocess": "contrast1",
+        "psm": 6
+      },
+      "dev": {
+        "cer": 0.011185682326621925,
+        "cohorts": {
+          "form": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          },
+          "statement": {
+            "cer": 0.017921146953405017,
+            "critical_accuracy": 0.6923076923076923
+          }
+        },
+        "critical_accuracy": 0.7894736842105263,
+        "rows": [
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-0"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-1"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-2"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-3"
+          },
+          {
+            "chars": 97,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 7,
+            "edits": 5,
+            "id": "dev-4"
+          }
+        ]
+      },
+      "paired": [
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 7,
+          "modality": "scan",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matched": 9,
+          "modality": "scan",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matched": 9,
+          "modality": "scan",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "matched": 7,
+          "modality": "scan",
+          "page": 5,
+          "total": 8
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "total": 8
+        }
+      ],
+      "paired_strict_gain": true,
+      "status": "LAB_CANDIDATE",
+      "validation": {
+        "cer": 0.011627906976744186,
+        "cohorts": {
+          "form": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          },
+          "statement": {
+            "cer": 0.018796992481203006,
+            "critical_accuracy": 0.6923076923076923
+          }
+        },
+        "critical_accuracy": 0.7894736842105263,
+        "rows": [
+          {
+            "chars": 89,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "validation-0"
+          },
+          {
+            "chars": 82,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "validation-1"
+          },
+          {
+            "chars": 86,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "validation-2"
+          },
+          {
+            "chars": 82,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "validation-3"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 7,
+            "edits": 5,
+            "id": "validation-4"
+          }
+        ]
+      }
+    },
+    {
+      "candidate": "contrast1-psm11",
+      "config": {
+        "id": "contrast1-psm11",
+        "preprocess": "contrast1",
+        "psm": 11
+      },
+      "dev": {
+        "cer": 0.011185682326621925,
+        "cohorts": {
+          "form": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          },
+          "statement": {
+            "cer": 0.017921146953405017,
+            "critical_accuracy": 0.6923076923076923
+          }
+        },
+        "critical_accuracy": 0.7894736842105263,
+        "rows": [
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-0"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-1"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-2"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-3"
+          },
+          {
+            "chars": 97,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 7,
+            "edits": 5,
+            "id": "dev-4"
+          }
+        ]
+      },
+      "paired": [
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 7,
+          "modality": "scan",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matched": 5,
+          "modality": "scan",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "matched": 5,
+          "modality": "photo",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7,
+            8
+          ],
+          "matched": 8,
+          "modality": "scan",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            8
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 10,
+          "modality": "scan",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 8,
+          "modality": "scan",
+          "page": 5,
+          "total": 8
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 8,
+          "modality": "photo",
+          "page": 5,
+          "total": 8
+        }
+      ],
+      "paired_strict_gain": false,
+      "status": "REJECTED_DEV"
+    }
+  ],
+  "schema": 1
+}
