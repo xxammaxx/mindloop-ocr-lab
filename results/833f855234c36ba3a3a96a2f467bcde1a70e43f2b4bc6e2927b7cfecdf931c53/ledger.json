@@ -1,0 +1,232 @@
+{
+  "baseline": {
+    "config": {
+      "id": "baseline",
+      "preprocess": "gray",
+      "psm": 6
+    },
+    "dev": {
+      "cer": 0.0,
+      "cohorts": {
+        "form": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        },
+        "statement": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        }
+      },
+      "critical_accuracy": 1.0,
+      "rows": [
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-0"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-1"
+        },
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-2"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "dev-3"
+        }
+      ]
+    },
+    "validation": {
+      "cer": 0.0,
+      "cohorts": {
+        "form": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        },
+        "statement": {
+          "cer": 0.0,
+          "critical_accuracy": 1.0
+        }
+      },
+      "critical_accuracy": 1.0,
+      "rows": [
+        {
+          "chars": 89,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-0"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-1"
+        },
+        {
+          "chars": 86,
+          "cohort": "statement",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-2"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 3,
+          "critical_total": 3,
+          "edits": 0,
+          "id": "validation-3"
+        }
+      ]
+    }
+  },
+  "complete": false,
+  "context": "833f855234c36ba3a3a96a2f467bcde1a70e43f2b4bc6e2927b7cfecdf931c53",
+  "environment": {
+    "code_sha256": "1532ed884d96cac4a9459dfdd7857ce6d282253f9905f7d6b2faa9e34835efba",
+    "engine": "tesseract 5.3.4",
+    "font_sha256": "ae7b7855e115a5966d8b1b3f80f254ccc117ec86f9965e202ee2940453837280",
+    "lang": "deu",
+    "model_sha256": "19d219bbb6672c869d20a9636c6816a81eb9a71796cb93ebe0cb1530e2cdb22d",
+    "pillow": "10.2.0"
+  },
+  "records": [
+    {
+      "candidate": "contrast-psm6",
+      "config": {
+        "id": "contrast-psm6",
+        "preprocess": "contrast",
+        "psm": 6
+      },
+      "dev": {
+        "cer": 0.0,
+        "cohorts": {
+          "form": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          },
+          "statement": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          }
+        },
+        "critical_accuracy": 1.0,
+        "rows": [
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-0"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-1"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-2"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-3"
+          }
+        ]
+      },
+      "status": "REJECTED_DEV"
+    },
+    {
+      "candidate": "contrast-psm11",
+      "config": {
+        "id": "contrast-psm11",
+        "preprocess": "contrast",
+        "psm": 11
+      },
+      "dev": {
+        "cer": 0.0,
+        "cohorts": {
+          "form": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          },
+          "statement": {
+            "cer": 0.0,
+            "critical_accuracy": 1.0
+          }
+        },
+        "critical_accuracy": 1.0,
+        "rows": [
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-0"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-1"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-2"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 3,
+            "critical_total": 3,
+            "edits": 0,
+            "id": "dev-3"
+          }
+        ]
+      },
+      "status": "REJECTED_DEV"
+    }
+  ],
+  "schema": 1
+}
