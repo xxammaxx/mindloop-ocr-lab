@@ -17,7 +17,7 @@ FONT = Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
 BASELINE = {'id': 'baseline', 'preprocess': 'gray', 'psm': 6}
 CANDIDATES = [
     {'id': f'{mode}-psm{psm}', 'preprocess': mode, 'psm': psm}
-    for mode in ('contrast', 'sharpen', 'threshold', 'scale2', 'gray')
+    for mode in ('contrast1', 'contrast', 'sharpen', 'threshold', 'scale2', 'gray')
     for psm in (6, 11) if (mode, psm) != ('gray', 6)
 ]
 
@@ -46,9 +46,9 @@ def plan(records, limit):
         raise ValueError('Each experiment batch can evaluate 1 or 2 candidates')
     done = {record['candidate'] for record in records}
     pending = [c for c in CANDIDATES if c['id'] not in done]
-    scored = [r for r in records if 'dev' in r]
+    scored = [r for r in records if 'dev' in r and not r.get('status', '').startswith('INCONCLUSIVE')]
     if scored:
-        best = min(scored, key=lambda r: (r['dev']['cer'], r['candidate']))
+        best = min(scored, key=lambda r: (-sum(x['matched'] for x in r.get('paired', [])), r['dev']['cer'], r['candidate']))
         family = best['candidate'].rsplit('-psm', 1)[0]
         pending.sort(key=lambda c: c['preprocess'] != family)
     return pending[:limit]
@@ -60,13 +60,18 @@ def fixtures(split):
     rng = random.Random(8243 if split == 'dev' else 37612)
     font = ImageFont.truetype(str(FONT), 29)
     cases = []
-    for index in range(4):
+    for index in range(5):
         form = index % 2
-        subject = ('Müller', 'Jäger', 'Straße', 'Größe')[index] if split == 'dev' else ('Grün', 'Bär', 'Öl', 'Maß')[index]
+        subject = ('Müller', 'Jäger', 'Straße', 'Größe', 'Gebühr')[index] if split == 'dev' else ('Grün', 'Bär', 'Öl', 'Maß', 'Größe')[index]
         amount = f'{rng.randrange(12, 900)},{rng.randrange(100):02d}'
         year = '2025' if split == 'dev' else '2024'
         lines = ([f'Wohngeldantrag {year}', f'Beispielname: {subject}', f'Monatsmiete: {amount} EUR', 'Hausgröße und Fläche'] if form else
                  [f'Nebenkostenabrechnung {year}', f'Beispielobjekt: {subject}', f'Heizkosten: {amount} EUR', 'Wärme und Gebühren'])
+        critical = [subject, amount, year]
+        if index == 4:
+            lines = (['Änderung: ÖL und ÜBERTRAG', 'Straße, Höhe, Gebühr, ẞ', 'Fläche 32 m², Wasser 12 m³', '§ 5 – Betrag 18,45 €'] if split == 'dev' else
+                     ['ÄRGER ÜBER ÖL: Fläche', 'Größe, Gebühr, Maße, ẞ', 'Wohnraum 48 m², Gas 20 m³', '§ 7 – Betrag 27,61 €'])
+            critical = ['ẞ', 'm²', 'm³', '§', '€', 'Fläche', 'Gebühr']
         image = Image.new('L', (840, 245), 246)
         draw = ImageDraw.Draw(image)
         for row, line in enumerate(lines):
@@ -77,7 +82,7 @@ def fixtures(split):
             image = image.filter(ImageFilter.GaussianBlur(1.1)).resize((630, 184))
         image = Image.eval(image, lambda p: int(p * 0.68 + 75))
         cases.append({'id': f'{split}-{index}', 'cohort': 'form' if form else 'statement',
-                      'truth': '\n'.join(lines), 'critical': [subject, amount, year], 'image': image})
+                      'truth': '\n'.join(lines), 'critical': critical, 'image': image})
     return cases
 
 
@@ -87,6 +92,8 @@ def prepare(image, mode):
         return gray
     if mode == 'contrast':
         return ImageOps.autocontrast(gray)
+    if mode == 'contrast1':
+        return ImageOps.autocontrast(gray, cutoff=1)
     if mode == 'sharpen':
         return ImageOps.autocontrast(gray).filter(ImageFilter.UnsharpMask(2, 180, 2))
     if mode == 'threshold':
@@ -126,6 +133,10 @@ def nonregressing(baseline, candidate):
                for c, b in baseline['cohorts'].items())
 
 
+def eligible_dev(baseline, measured, paired_gain=None):
+    return nonregressing(baseline, measured) and (improves(baseline, measured) if paired_gain is None else paired_gain)
+
+
 def load_ledger(path, context):
     if not path.exists():
         return {'schema': 1, 'context': context, 'records': []}
@@ -145,7 +156,7 @@ def save_ledger(path, state):
     temporary.replace(path)
 
 
-def context(lang):
+def context(lang, corpus=None):
     version = subprocess.check_output(['tesseract', '--version'], text=True).splitlines()[0]
     languages = subprocess.check_output(['tesseract', '--list-langs'], text=True).splitlines()
     if lang not in languages[1:]:
@@ -154,11 +165,17 @@ def context(lang):
     metadata = {'engine': version, 'lang': lang, 'model_sha256': hashlib.sha256((tessdir / (lang + '.traineddata')).read_bytes()).hexdigest(),
                 'pillow': PIL.__version__, 'font_sha256': hashlib.sha256(FONT.read_bytes()).hexdigest(),
                 'code_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    if corpus is not None:
+        from document_benchmark import corpus_digest
+        metadata['corpus_sha256'] = corpus_digest(corpus)
+        metadata['benchmark_sha256'] = hashlib.sha256(Path(__file__).with_name('document_benchmark.py').read_bytes()).hexdigest()
+        pdfimages = subprocess.run(['pdfimages', '-v'], capture_output=True, text=True, check=True)
+        metadata['pdfimages'] = (pdfimages.stderr or pdfimages.stdout).splitlines()[0]
     return hashlib.sha256(json.dumps(metadata, sort_keys=True).encode()).hexdigest(), metadata
 
 
-def run(root, lang, limit):
-    key, metadata = context(lang)
+def run(root, lang, limit, corpus=None):
+    key, metadata = context(lang, corpus)
     path = root / key / 'ledger.json'
     state = load_ledger(path, key)
     state['environment'] = metadata
@@ -169,19 +186,43 @@ def run(root, lang, limit):
         return
     if 'baseline' not in state:
         state['baseline'] = {'config': BASELINE, 'dev': evaluate(dev, BASELINE, lang), 'validation': evaluate(validation, BASELINE, lang)}
+        if corpus is not None:
+            from document_benchmark import evaluate_corpus
+            state['baseline']['paired'] = evaluate_corpus(corpus, BASELINE, lang)
         save_ledger(path, state)
     for candidate in candidates:
-        measured = evaluate(dev, candidate, lang)
-        record = {'candidate': candidate['id'], 'config': candidate, 'dev': measured, 'status': 'REJECTED_DEV'}
-        if improves(state['baseline']['dev'], measured) and nonregressing(state['baseline']['dev'], measured):
-            holdout = evaluate(validation, candidate, lang)
-            record['validation'] = holdout
-            record['status'] = ('LAB_CANDIDATE' if improves(state['baseline']['validation'], holdout) and
-                                nonregressing(state['baseline']['validation'], holdout) else 'REJECTED_VALIDATION')
+        record = {'candidate': candidate['id'], 'config': candidate, 'status': 'REJECTED_DEV'}
+        stage = 'dev'
+        try:
+            measured = evaluate(dev, candidate, lang)
+            record['dev'] = measured
+            paired_gain = None
+            if corpus is not None:
+                from document_benchmark import evaluate_corpus, paired_improves
+                stage = 'paired'
+                record['paired'] = evaluate_corpus(corpus, candidate, lang)
+                paired_gain = paired_improves(state['baseline']['paired'], record['paired'])
+                record['paired_strict_gain'] = paired_gain
+            if eligible_dev(state['baseline']['dev'], measured, paired_gain):
+                stage = 'validation'
+                holdout = evaluate(validation, candidate, lang)
+                record['validation'] = holdout
+                valid = nonregressing(state['baseline']['validation'], holdout) and (corpus is not None or improves(state['baseline']['validation'], holdout))
+                record['status'] = 'LAB_CANDIDATE' if valid else 'REJECTED_VALIDATION'
+        except (subprocess.SubprocessError, OSError, ValueError) as exc:
+            record['status'] = 'INCONCLUSIVE_TIMEOUT' if isinstance(exc, subprocess.TimeoutExpired) else 'INCONCLUSIVE_ERROR'
+            record['stage'] = stage
+            record['error_type'] = type(exc).__name__
         state['records'].append(record)
         state['complete'] = not plan(state['records'], 1)
         save_ledger(path, state)
-        print(candidate['id'], record['status'], 'dev CER', measured['cer'], 'critical', measured['critical_accuracy'])
+        print(candidate['id'], record['status'])
+        if 'dev' in record:
+            print('dev CER', record['dev']['cer'], 'critical', record['dev']['critical_accuracy'])
+        if 'paired' in record:
+            for modality in ('photo', 'scan'):
+                scores = [r for r in record['paired'] if r['modality'] == modality]
+                print(modality, sum(r['matched'] for r in scores), '/', sum(r['total'] for r in scores))
 
 
 if __name__ == '__main__':
@@ -189,5 +230,6 @@ if __name__ == '__main__':
     parser.add_argument('--results-dir', type=Path, default=Path('results'))
     parser.add_argument('--lang', choices=['deu', 'eng'], default='deu')
     parser.add_argument('--max-candidates', type=int, choices=[1, 2], default=2)
+    parser.add_argument('--corpus', type=Path, help='Explicit approved paired document corpus; fail if unavailable')
     arguments = parser.parse_args()
-    run(arguments.results_dir, arguments.lang, arguments.max_candidates)
+    run(arguments.results_dir, arguments.lang, arguments.max_candidates, arguments.corpus)

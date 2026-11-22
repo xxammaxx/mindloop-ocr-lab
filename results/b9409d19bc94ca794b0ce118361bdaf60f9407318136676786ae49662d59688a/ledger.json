@@ -1,0 +1,533 @@
+{
+  "baseline": {
+    "config": {
+      "id": "baseline",
+      "preprocess": "gray",
+      "psm": 6
+    },
+    "dev": {
+      "cer": 0.06263982102908278,
+      "cohorts": {
+        "form": {
+          "cer": 0.05357142857142857,
+          "critical_accuracy": 0.6666666666666666
+        },
+        "statement": {
+          "cer": 0.06810035842293907,
+          "critical_accuracy": 0.46153846153846156
+        }
+      },
+      "critical_accuracy": 0.5263157894736842,
+      "rows": [
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "dev-0"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "dev-1"
+        },
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "dev-2"
+        },
+        {
+          "chars": 84,
+          "cohort": "form",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 5,
+          "id": "dev-3"
+        },
+        {
+          "chars": 97,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 7,
+          "edits": 11,
+          "id": "dev-4"
+        }
+      ]
+    },
+    "paired": [
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "matched": 6,
+        "modality": "scan",
+        "page": 1,
+        "total": 7
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "matched": 6,
+        "modality": "photo",
+        "page": 1,
+        "total": 7
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "matched": 7,
+        "modality": "scan",
+        "page": 2,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "matched": 6,
+        "modality": "photo",
+        "page": 2,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "matched": 9,
+        "modality": "scan",
+        "page": 3,
+        "total": 9
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "matched": 6,
+        "modality": "photo",
+        "page": 3,
+        "total": 9
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "matched": 8,
+        "modality": "scan",
+        "page": 4,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "matched": 10,
+        "modality": "photo",
+        "page": 4,
+        "total": 10
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "matched": 7,
+        "modality": "scan",
+        "page": 5,
+        "total": 8
+      },
+      {
+        "document": "statement-01",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "matched": 8,
+        "modality": "photo",
+        "page": 5,
+        "total": 8
+      }
+    ],
+    "validation": {
+      "cer": 0.06279069767441861,
+      "cohorts": {
+        "form": {
+          "cer": 0.04878048780487805,
+          "critical_accuracy": 0.6666666666666666
+        },
+        "statement": {
+          "cer": 0.07142857142857142,
+          "critical_accuracy": 0.46153846153846156
+        }
+      },
+      "critical_accuracy": 0.5263157894736842,
+      "rows": [
+        {
+          "chars": 89,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 3,
+          "id": "validation-0"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "validation-1"
+        },
+        {
+          "chars": 86,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "validation-2"
+        },
+        {
+          "chars": 82,
+          "cohort": "form",
+          "critical_correct": 2,
+          "critical_total": 3,
+          "edits": 4,
+          "id": "validation-3"
+        },
+        {
+          "chars": 91,
+          "cohort": "statement",
+          "critical_correct": 2,
+          "critical_total": 7,
+          "edits": 12,
+          "id": "validation-4"
+        }
+      ]
+    }
+  },
+  "complete": false,
+  "context": "b9409d19bc94ca794b0ce118361bdaf60f9407318136676786ae49662d59688a",
+  "environment": {
+    "benchmark_sha256": "ab5c86a05f4ac64b93f492971804af02825f1111adda61e2bc0552aeb4dccdb2",
+    "code_sha256": "55e4a438957ea20945a54bec83cfa7841058abc6014264ae0950f3ec3be6e308",
+    "corpus_sha256": "eb829484568199517d4a9879ecfe9cfc09cc0f5b2beb12a8c629f33c63601d00",
+    "engine": "tesseract 5.5.0",
+    "font_sha256": "57f73e11f51999432bf7ab22ce55b6f945d5eca1bf824404cfa9ec2e3718c84e",
+    "lang": "eng",
+    "model_sha256": "7d4322bd2a7749724879683fc3912cb542f19906c83bcc1a52132556427170b2",
+    "pdfimages": "pdfimages version 25.03.0",
+    "pillow": "13.0.0"
+  },
+  "records": [
+    {
+      "candidate": "contrast1-psm6",
+      "config": {
+        "id": "contrast1-psm6",
+        "preprocess": "contrast1",
+        "psm": 6
+      },
+      "dev": {
+        "cer": 0.06263982102908278,
+        "cohorts": {
+          "form": {
+            "cer": 0.05357142857142857,
+            "critical_accuracy": 0.6666666666666666
+          },
+          "statement": {
+            "cer": 0.06810035842293907,
+            "critical_accuracy": 0.46153846153846156
+          }
+        },
+        "critical_accuracy": 0.5263157894736842,
+        "rows": [
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 2,
+            "critical_total": 3,
+            "edits": 4,
+            "id": "dev-0"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 2,
+            "critical_total": 3,
+            "edits": 4,
+            "id": "dev-1"
+          },
+          {
+            "chars": 91,
+            "cohort": "statement",
+            "critical_correct": 2,
+            "critical_total": 3,
+            "edits": 4,
+            "id": "dev-2"
+          },
+          {
+            "chars": 84,
+            "cohort": "form",
+            "critical_correct": 2,
+            "critical_total": 3,
+            "edits": 5,
+            "id": "dev-3"
+          },
+          {
+            "chars": 97,
+            "cohort": "statement",
+            "critical_correct": 2,
+            "critical_total": 7,
+            "edits": 11,
+            "id": "dev-4"
+          }
+        ]
+      },
+      "paired": [
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 6,
+          "modality": "scan",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "matched": 6,
+          "modality": "photo",
+          "page": 1,
+          "total": 7
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 7,
+          "modality": "scan",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 6,
+          "modality": "photo",
+          "page": 2,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ],
+          "matched": 9,
+          "modality": "scan",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "matched": 6,
+          "modality": "photo",
+          "page": 3,
+          "total": 9
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 9,
+          "modality": "scan",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "matched": 10,
+          "modality": "photo",
+          "page": 4,
+          "total": 10
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            7
+          ],
+          "matched": 7,
+          "modality": "scan",
+          "page": 5,
+          "total": 8
+        },
+        {
+          "document": "statement-01",
+          "hits": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7
+          ],
+          "matched": 7,
+          "modality": "photo",
+          "page": 5,
+          "total": 8
+        }
+      ],
+      "paired_strict_gain": false,
+      "status": "REJECTED_DEV"
+    }
+  ],
+  "schema": 1
+}

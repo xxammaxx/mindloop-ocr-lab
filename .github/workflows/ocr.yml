@@ -21,13 +21,13 @@ jobs:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           persist-credentials: false
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-deu python3-pil fonts-dejavu-core
+      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-deu python3-pil fonts-dejavu-core poppler-utils
       - run: /usr/bin/python3 -m unittest -v
       - run: /usr/bin/python3 lab.py --lang deu --max-candidates 1 --results-dir "$RUNNER_TEMP/ocr-smoke"
       - name: Paired-document baseline when a reviewed corpus is present
         if: hashFiles('fixtures/manifest.json') != ''
         run: |
-          sudo apt-get install -y --no-install-recommends poppler-utils
+          (cd fixtures && sha256sum -c SHA256SUMS)
           /usr/bin/python3 document_benchmark.py fixtures --lang deu
   research:
     if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
@@ -49,20 +49,34 @@ jobs:
           import hashlib, json, os
           from pathlib import Path
           digest = hashlib.sha256(Path('lab.py').read_bytes()).hexdigest()
+          benchmark = hashlib.sha256(Path('document_benchmark.py').read_bytes()).hexdigest()
+          root = Path('fixtures')
+          manifest = json.loads((root / 'manifest.json').read_text())
+          files = {root / 'manifest.json'}
+          for doc in manifest['documents']:
+              files.add(root / doc['scan'])
+              files.update(root / p['photo'] for p in doc['pages'])
+          corpus = hashlib.sha256()
+          for file in sorted(files):
+              corpus.update(file.name.encode() + b'\0' + hashlib.sha256(file.read_bytes()).digest())
           complete = any(s.get('complete') is True and
                          s.get('environment', {}).get('code_sha256') == digest and
+                         s['environment'].get('benchmark_sha256') == benchmark and
+                         s['environment'].get('corpus_sha256') == corpus.hexdigest() and
                          s['environment'].get('lang') == 'deu'
                          for s in (json.loads(p.read_text()) for p in Path('results').glob('*/ledger.json')))
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
               out.write('run=' + ('false' if complete and os.environ['EVENT'] == 'schedule' else 'true') + '\n')
           PY
       - if: steps.pending.outputs.run == 'true'
-        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-deu python3-pil fonts-dejavu-core
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends tesseract-ocr tesseract-ocr-deu python3-pil fonts-dejavu-core poppler-utils
       - if: steps.pending.outputs.run == 'true'
         run: /usr/bin/python3 -m unittest -v
       - id: experiment
         if: steps.pending.outputs.run == 'true'
-        run: /usr/bin/python3 lab.py --lang deu --max-candidates 2
+        run: |
+          (cd fixtures && sha256sum -c SHA256SUMS)
+          /usr/bin/python3 lab.py --lang deu --max-candidates 2 --corpus fixtures
       - name: Persist measured evidence only
         if: always() && (steps.experiment.outcome == 'success' || steps.experiment.outcome == 'failure')
         shell: bash

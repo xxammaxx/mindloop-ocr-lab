@@ -1,0 +1,13 @@
+{
+  "schema": 1,
+  "documents": [{
+    "id": "statement-01", "scan": "scan.pdf",
+    "pages": [
+      {"photo": "photo-01.png", "fields": ["Max Mustermann", "Musterstraße 12", "12345 Musterstadt", "09.11.2026", "01.01.2025", "31.12.2025", "Nachzahlungsbetrag"]},
+      {"photo": "photo-02.png", "fields": ["Max Mustermann", "Musterstraße 12", "8.345,97", "1.248,44", "48,00", "12.446,27", "1.943,43", "1.380,00", "563,43", "Nachzahlung"]},
+      {"photo": "photo-03.png", "fields": ["Mustermann, Max", "1234567890", "50.641,00", "6.392,02", "325,54", "8.345,97", "1.092,34", "5,798", "1.067,57"]},
+      {"photo": "photo-04.png", "fields": ["Mustermann, Max", "1234567890", "156,10", "1.092,34", "1.248,44", "24,66", "10000001", "10000006", "18,606", "7774,130"]},
+      {"photo": "photo-05.png", "fields": ["Mustermann, Max", "1234567890", "48,00", "50.641,00", "40.512,80", "91,78%", "78,37%", "Warmwasser"]}
+    ]
+  }]
+}
