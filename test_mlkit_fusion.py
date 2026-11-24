@@ -20,6 +20,14 @@ class FusionTests(unittest.TestCase):
         self.assertEqual(result['conflicts'], 1)
         self.assertNotIn('18,00', result['text'])
 
+    def test_missing_numeric_value_is_not_automatically_injected(self):
+        first = {'text': 'Name', 'lines': [line('Name', [10, 10, 100, 30])]}
+        second = {'lines': [line('1.800,00', [200, 80, 300, 100])]}
+        result = fuse(first, second)
+        self.assertEqual(result['text'], 'Name')
+        self.assertEqual(result['added_lines'], 0)
+        self.assertEqual(result['conflicts'], 1)
+
     def test_no_duplicate_or_shifted_line(self):
         first = {'text': 'Straße', 'lines': [line('Straße', [10, 10, 80, 30])]}
         result = fuse(first, {'lines': [line('Straße', [11, 32, 81, 52])]})
