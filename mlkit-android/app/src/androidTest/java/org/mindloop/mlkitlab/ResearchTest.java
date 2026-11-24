@@ -74,6 +74,20 @@ public class ResearchTest {
         assertNull(RegionPolicy.select(ordinary, 500, 500));
     }
 
+    @Test public void newPoliciesTargetDifferentEvidence() throws Exception {
+        JSONArray rows = new JSONArray()
+            .put(new JSONObject().put("text","Long label").put("box",new JSONArray(new int[]{20,10,100,30})))
+            .put(new JSONObject().put("text","Tiny label").put("box",new JSONArray(new int[]{20,60,70,70})))
+            .put(new JSONObject().put("text","ABC").put("box",new JSONArray(new int[]{20,100,70,120})));
+        assertNull(RegionPolicy.select(rows,500,500,"region-v1"));
+        Rect small = RegionPolicy.select(rows,500,500,"region-v2-small");
+        assertNotNull(small);
+        assertTrue(small.contains(20,60));
+        Rect shortCrop = RegionPolicy.select(rows,500,500,"region-v3-short");
+        assertNotNull(shortCrop);
+        assertTrue(shortCrop.contains(20,100));
+    }
+
     @Test public void runPairedResearch() throws Exception {
         Context assets = InstrumentationRegistry.getInstrumentation().getContext();
         Context target = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -99,10 +113,10 @@ public class ResearchTest {
                 image.recycle();
                 for (String pipeline : new String[]{"umliva-nv21", "feldexa-gray-bitmap"}) {
                     String key = item.getString("id") + "|" + pipeline;
-                    if ("region-v1".equals(item.getString("variant"))) {
+                    if (item.getString("variant").startsWith("region-")) {
                         JSONObject baseline = baselineRows.get(key);
                         assertNotNull("candidate must follow measured baseline", baseline);
-                        Rect crop = RegionPolicy.select(baseline.getJSONArray("lines"), w, h);
+                        Rect crop = RegionPolicy.select(baseline.getJSONArray("lines"), w, h, item.getString("variant"));
                         JSONArray retryLines = new JSONArray();
                         StringBuilder retryText = new StringBuilder();
                         long duration = 0;
