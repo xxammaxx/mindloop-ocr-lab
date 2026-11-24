@@ -110,3 +110,19 @@ jobs:
       - run: python3 mlkit_next.py
         env:
           GH_TOKEN: ${{ github.token }}
+
+  research-handoff:
+    needs: research
+    if: needs.research.result == 'success' && needs.research.outputs.persisted == 'true' && vars.MINDLOOP_HANDOFF_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    permissions:
+      contents: read
+    steps:
+      - name: Dispatch evidence reference to private memory receiver
+        env:
+          GH_TOKEN: ${{ secrets.MINDLOOP_MEMORY_DISPATCH_TOKEN }}
+        run: |
+          set -euo pipefail
+          test -n "$GH_TOKEN"
+          gh api --method POST repos/xxammaxx/mindloop-memory/dispatches -f event_type=ocr.evidence.available -F 'client_payload[run_id]'="$GITHUB_RUN_ID" -f 'client_payload[source_sha]'="$GITHUB_SHA"
