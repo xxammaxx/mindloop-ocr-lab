@@ -44,3 +44,52 @@ jobs:
           echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
       - name: Compile isolated offline-ML-Kit research APK and instrumented tests
         run: gradle -p mlkit-android --no-daemon :app:assembleDebug :app:assembleDebugAndroidTest
+
+  android-research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Prepare bounded fresh candidate
+        run: |
+          set -euo pipefail
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-pil fonts-dejavu-core poppler-utils
+          (cd fixtures && sha256sum -c SHA256SUMS)
+          candidate=$(python3 mlkit_lab.py pending)
+          test "$candidate" = region-v2-small
+          echo "CANDIDATE=$candidate" >> "$GITHUB_ENV"
+          /usr/bin/python3 mlkit_lab.py prepare --candidate "$candidate" --assets mlkit-android/app/src/androidTest/assets --truth "$RUNNER_TEMP/mlkit-truth.json"
+          curl --fail --location --max-time 180 --output "$RUNNER_TEMP/gradle.zip" https://services.gradle.org/distributions/gradle-8.13-bin.zip
+          echo "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
+          echo "JAVA_HOME=$JAVA_HOME_17_X64" >> "$GITHUB_ENV"
+          test -c /dev/kvm
+          sudo chmod a+rw /dev/kvm
+      - name: Execute actual offline paired emulator benchmark
+        uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          cores: 2
+          ram-size: 3072M
+          heap-size: 512M
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          disable-animations: true
+          script: bash mlkit-android/run-research.sh
+      - name: Check scored evidence without publishing from PR
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+          from mlkit_lab import ledger
+          _, d = ledger(Path('results'), Path('fixtures'))
+          assert d['records'][-1]['candidate'] == 'region-v2-small'
+          assert d['records'][-1]['status'] in ('LAB_CANDIDATE','REJECTED_DEV')
+          PY

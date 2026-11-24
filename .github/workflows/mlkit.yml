@@ -1,9 +1,16 @@
 name: ML Kit OCR research
+run-name: ML Kit OCR research ${{ inputs.mindloop_cycle || 'standalone' }}
 on:
   push:
     branches: [main]
     paths: ['mlkit_lab.py', 'mlkit_fusion.py', 'feldexa_forms.py', 'test_mlkit_lab.py', 'test_mlkit_fusion.py', 'mlkit-android/**', 'fixtures/**', '.github/workflows/mlkit.yml']
   workflow_dispatch:
+    inputs:
+      mindloop_cycle:
+        description: Opaque integration cycle identifier
+        required: false
+        type: string
+        default: ''
   schedule:
     - cron: '37 2 * * *'
 
@@ -12,7 +19,7 @@ permissions:
 
 jobs:
   research:
-    if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.ref == 'refs/heads/main'
+    if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.ref == 'refs/heads/main' && (vars.MINDLOOP_RING_MANAGED != 'true' || (github.event_name == 'workflow_dispatch' && inputs.mindloop_cycle != ''))
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     concurrency:
@@ -28,7 +35,7 @@ jobs:
         run: |
           candidate=$(python3 mlkit_lab.py pending)
           case "$candidate" in
-            region-v1) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
+            region-v2-small|region-v3-short) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
             EXHAUSTED|BLOCKED) echo "$candidate" ;;
             *) exit 1 ;;
           esac
@@ -81,18 +88,42 @@ jobs:
           set -euo pipefail
           git add -- results/
           if git diff --cached --quiet; then exit 0; fi
-          git diff --cached --name-only | while IFS= read -r path; do
-            [[ "$path" =~ ^results/[0-9a-f]{64}/ledger\.json$ ]] || exit 1
-          done
+          path=$(git diff --cached --name-only)
+          [[ "$path" =~ ^results/[0-9a-f]{64}/ledger\.json$ ]] || exit 1
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git commit -m 'research: record existing ML Kit pipeline experiment'
           git push origin HEAD:main
           echo 'persisted=true' >> "$GITHUB_OUTPUT"
+          printf '%s\n' "$path" > "$RUNNER_TEMP/mindloop-ledger-path"
+          git rev-parse HEAD > "$RUNNER_TEMP/mindloop-ledger-commit"
+      - name: Bind persisted evidence to this workflow run
+        if: success() && steps.persist.outputs.persisted == 'true' && inputs.mindloop_cycle != ''
+        env:
+          CYCLE: ${{ inputs.mindloop_cycle }}
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib, re, hashlib
+          p=pathlib.Path(os.environ['RUNNER_TEMP'])
+          cycle=os.environ['CYCLE']
+          assert re.fullmatch(r'[0-9]{1,20}',cycle)
+          ledger=(p/'mindloop-ledger-path').read_text().strip()
+          data=pathlib.Path(ledger).read_bytes()
+          record={'schema':1,'cycle':cycle,'run_id':os.environ['GITHUB_RUN_ID'],'source_sha':os.environ['GITHUB_SHA'],'commit':(p/'mindloop-ledger-commit').read_text().strip(),'path':ledger,'sha256':hashlib.sha256(data).hexdigest()}
+          (p/'mindloop-ocr-receipt.json').write_text(json.dumps(record,sort_keys=True)+'\n')
+          PY
+      - name: Upload exact OCR evidence receipt
+        if: success() && steps.persist.outputs.persisted == 'true' && inputs.mindloop_cycle != ''
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: mindloop-ocr-${{ github.run_id }}
+          path: ${{ runner.temp }}/mindloop-ocr-receipt.json
+          if-no-files-found: error
+          retention-days: 7
 
   continue:
     needs: research
-    if: needs.research.result == 'success' && needs.research.outputs.persisted == 'true'
+    if: needs.research.result == 'success' && needs.research.outputs.persisted == 'true' && inputs.mindloop_cycle == '' && vars.MINDLOOP_RING_MANAGED != 'true'
     runs-on: ubuntu-24.04
     timeout-minutes: 3
     concurrency:
