@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PIPELINES = ('umliva-nv21', 'feldexa-gray-bitmap')
-CANDIDATES = ('contrast1-fusion',)
+CANDIDATES = ('region-crop-retry',)
 SDK = 'com.google.mlkit:text-recognition:16.0.1'
 
 
@@ -22,7 +22,7 @@ def pending(records):
 
 def signature(corpus):
     h = hashlib.sha256()
-    paths = [ROOT / n for n in ('mlkit_lab.py', 'mlkit_fusion.py', 'feldexa_forms.py', 'lab.py', 'document_benchmark.py', '.github/workflows/mlkit.yml')]
+    paths = [ROOT / n for n in ('mlkit_lab.py', 'mlkit_fusion.py', 'feldexa_forms.py', 'lab.py', 'document_benchmark.py', 'test_mlkit_lab.py', 'test_mlkit_fusion.py', '.github/workflows/mlkit.yml')]
     paths += sorted(p for p in (ROOT / 'mlkit-android').rglob('*') if p.is_file() and ('src' in p.parts or p.suffix in ('.gradle', '.properties', '.sh')) and 'assets' not in p.parts and 'build' not in p.parts and '.gradle' not in p.parts)
     paths += [corpus / 'manifest.json', corpus / 'SHA256SUMS']
     paths += sorted(p for p in (corpus / 'feldexa').glob('*') if p.is_file())
@@ -110,9 +110,61 @@ def score_fusion(truth, observations):
     return result
 
 
+def score_region_retry(truth, observations):
+    """Score a first-pass-triggered crop retry without persisting raw OCR text."""
+    from mlkit_fusion import fuse, retry_regions
+    candidate = 'region-crop-retry'
+    by_key = {(r['pipeline'], r['id'], r['variant']): r for r in observations}
+    if len(by_key) != len(observations):
+        raise ValueError('Duplicate input to region retry')
+    cases = {c['id']: c for c in truth}
+    expected = {(v, p, i) for v in ('baseline', candidate) for p in PIPELINES for i in cases}
+    keys = {(r['variant'], r['pipeline'], r['id']) for r in observations}
+    if keys != expected or len(keys) != len(expected):
+        raise ValueError('Missing, duplicate or unexpected observation')
+    paired, diagnostics = [], []
+    for pipeline in PIPELINES:
+        for case in truth:
+            case_id = case['id']
+            before = by_key[pipeline, case_id, 'baseline']
+            retry = by_key[pipeline, case_id, candidate]
+            for row in (before, retry):
+                if row.get('status') != 'ok' or not isinstance(row.get('text'), str):
+                    raise ValueError('Unsuccessful OCR observation')
+                if not isinstance(row.get('elapsed_ms'), (int, float)) or row['elapsed_ms'] < 0:
+                    raise ValueError('Invalid OCR timing')
+            selected = retry_regions(before.get('lines', []), retry['raster_width'], retry['raster_height'])
+            if retry.get('retry_regions') != len(selected):
+                raise ValueError('Runtime and reference retry policies disagree')
+            for line in retry.get('lines', []):
+                box = line['box']
+                if len(box) != 4 or box[0] < 0 or box[1] < 0 or box[2] > retry['raster_width'] or box[3] > retry['raster_height']:
+                    raise ValueError('Retry OCR box lies outside source raster')
+                if not any(box[0] >= region[0] and box[1] >= region[1] and
+                           box[2] <= region[2] and box[3] <= region[3] for region in selected):
+                    raise ValueError('Retry OCR box was not mapped into a selected crop')
+            merged = fuse(before, retry)
+            paired.append({**before, 'variant': candidate, 'text': merged['text'],
+                           'line_count': before['line_count'] + merged['added_lines'],
+                           'elapsed_ms': before['elapsed_ms'] + retry['elapsed_ms']})
+            diagnostics.append({'pipeline': pipeline, 'id': case_id,
+                                'retry_regions': retry['retry_regions'],
+                                'added_lines': merged['added_lines'],
+                                'conflicts': merged['conflicts']})
+    full = [r for r in observations if r['variant'] == 'baseline'] + paired
+    result = score(truth, full, candidate)
+    result['config'].update(trigger='first-pass line length <= 2 or replacement character',
+                            crop='line-height padding, clipped to source raster',
+                            max_regions_per_page=4, passes=2,
+                            fusion='add spatially new lines; preserve conflicts')
+    result['diagnostics'] = diagnostics
+    result['evidence_limit'] = 'Emulator benchmark only; no field geometry/role acceptance or consumer production-path claim.'
+    return result
+
+
 def prepare_assets(corpus, assets, truth_path, candidate):
     from PIL import Image, ImageOps
-    from lab import fixtures, prepare
+    from lab import fixtures
     from document_benchmark import load_manifest, valid_scan_inventory
     from feldexa_forms import form_cases
     assets.mkdir(parents=True, exist_ok=True)
@@ -123,9 +175,8 @@ def prepare_assets(corpus, assets, truth_path, candidate):
         image.thumbnail((2400, 2400), Image.Resampling.LANCZOS)
         truth.append(case)
         for variant in ('baseline', candidate):
-            out = image if variant == 'baseline' else prepare(image, 'contrast1' if variant == 'contrast1-fusion' else variant)
             filename = f'{case["id"]}-{variant}.png'
-            out.save(assets / filename)
+            image.save(assets / filename)
             index.append({'id': case['id'], 'variant': variant, 'file': filename})
 
     for split in ('dev', 'validation'):
@@ -180,7 +231,7 @@ def main():
         runtime = json.loads(args.runtime.read_text())
         if runtime['sdk'] != SDK or runtime['api'] != '35' or not runtime['aar_hashes']:
             raise ValueError('Unqualified emulator / ML Kit artifact')
-        record = score_fusion(json.loads(args.truth.read_text()), json.loads(args.observations.read_text()))
+        record = score_region_retry(json.loads(args.truth.read_text()), json.loads(args.observations.read_text()))
         record['runtime'] = runtime
     state['records'].append(record)
     state['complete'] = record['status'] != 'INCONCLUSIVE_INFRA' and pending(state['records']) is None

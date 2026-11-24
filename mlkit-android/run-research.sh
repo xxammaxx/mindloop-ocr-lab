@@ -9,7 +9,7 @@ adb shell svc wifi disable
 adb shell svc data disable
 adb shell pm clear org.mindloop.mlkitlab
 adb shell am instrument -w -r org.mindloop.mlkitlab.test/androidx.test.runner.AndroidJUnitRunner | tee "$RUNNER_TEMP/mlkit-instrument.log"
-grep -Fq 'OK (2 tests)' "$RUNNER_TEMP/mlkit-instrument.log"
+grep -Fq 'OK (3 tests)' "$RUNNER_TEMP/mlkit-instrument.log"
 adb exec-out run-as org.mindloop.mlkitlab cat files/observations.json > "$RUNNER_TEMP/mlkit-observations.json"
 python3 - <<'PY'
 import hashlib, json, os, subprocess
@@ -22,4 +22,4 @@ data = {'sdk': 'com.google.mlkit:text-recognition:16.0.1', 'api': '35', 'abi': s
         'aar_hashes': {p.name: hashlib.sha256(p.read_bytes()).hexdigest() for p in files}}
 (Path(os.environ['RUNNER_TEMP']) / 'mlkit-runtime.json').write_text(json.dumps(data))
 PY
-/usr/bin/python3 mlkit_lab.py score --candidate "$CANDIDATE" --truth "$RUNNER_TEMP/mlkit-truth.json" --observations "$RUNNER_TEMP/mlkit-observations.json" --runtime "$RUNNER_TEMP/mlkit-runtime.json"
+/usr/bin/python3 mlkit_lab.py score --candidate "$CANDIDATE" --truth "$RUNNER_TEMP/mlkit-truth.json" --observations "$RUNNER_TEMP/mlkit-observations.json" --runtime "$RUNNER_TEMP/mlkit-runtime.json" --results-dir "${MLKIT_RESULTS_DIR:-results}"

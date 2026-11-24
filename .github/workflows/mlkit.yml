@@ -11,6 +11,70 @@ permissions:
   contents: read
 
 jobs:
+  validate-candidate:
+    if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    concurrency:
+      group: ocr-research-main
+      cancel-in-progress: false
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Verify the next registered candidate
+        run: |
+          candidate=$(/usr/bin/python3 mlkit_lab.py pending)
+          test "$candidate" = region-crop-retry
+          echo "Candidate: $candidate"
+      - name: Install corpus tools and verify fixtures
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-pil fonts-dejavu-core poppler-utils
+          (cd fixtures && sha256sum -c SHA256SUMS)
+          /usr/bin/python3 -m unittest -v
+          mkdir -p "$RUNNER_TEMP/ocr-research/results"
+          /usr/bin/python3 mlkit_lab.py prepare --candidate region-crop-retry \
+            --assets mlkit-android/app/src/androidTest/assets \
+            --truth "$RUNNER_TEMP/mlkit-truth.json" \
+            --results-dir "$RUNNER_TEMP/ocr-research/results"
+      - name: Prepare Android build tools
+        run: |
+          curl --fail --location --max-time 180 --output "$RUNNER_TEMP/gradle.zip" https://services.gradle.org/distributions/gradle-8.13-bin.zip
+          echo "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
+          echo "JAVA_HOME=$JAVA_HOME_17_X64" >> "$GITHUB_ENV"
+          test -c /dev/kvm
+          sudo chmod a+rw /dev/kvm
+      - uses: reactivecircus/android-emulator-runner@a421e43855164a8197daf9d8d40fe71c6996bb0d
+        env:
+          CANDIDATE: region-crop-retry
+          MLKIT_RESULTS_DIR: ${{ runner.temp }}/ocr-research/results
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          cores: 2
+          ram-size: 3072M
+          heap-size: 512M
+          emulator-options: -no-window -no-snapshot -noaudio -no-boot-anim -gpu swiftshader_indirect
+          disable-animations: true
+          script: bash mlkit-android/run-research.sh
+      - name: Print the bounded result ledger for persistence on the review branch
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP']) / 'ocr-research' / 'results'
+          files = sorted(root.glob('*/ledger.json'))
+          if files:
+              print(json.dumps(json.loads(files[-1].read_text()), ensure_ascii=False, sort_keys=True))
+          else:
+              print('No result ledger was produced.')
+          PY
+
   research:
     if: github.repository == 'xxammaxx/mindloop-ocr-lab' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-24.04
@@ -28,7 +92,7 @@ jobs:
         run: |
           candidate=$(python3 mlkit_lab.py pending)
           case "$candidate" in
-            contrast1-fusion) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
+            region-crop-retry) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
             EXHAUSTED|BLOCKED) echo "$candidate" ;;
             *) exit 1 ;;
           esac

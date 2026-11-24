@@ -26,16 +26,16 @@ class ContinueResearchTests(unittest.TestCase):
         self.assertEqual(dispatches, [['gh', 'workflow', 'run', 'mlkit.yml', '--ref', 'main', '--repo', 'xxammaxx/mindloop-ocr-lab']] if expected else [])
 
     def test_rejected_result_starts_next_candidate(self):
-        self.check_dispatch([], ['completed'], 'contrast1-fusion')
+        self.check_dispatch([], ['completed'], 'region-crop-retry')
 
     def test_candidate_result_still_continues(self):
-        self.check_dispatch([{'candidate': 'contrast1', 'status': 'LAB_CANDIDATE'}], [], 'contrast1-fusion')
+        self.check_dispatch([{'candidate': 'contrast1', 'status': 'LAB_CANDIDATE'}], [], 'region-crop-retry')
 
     def test_infrastructure_failure_stops(self):
         self.check_dispatch([{'candidate': 'contrast1', 'status': 'INCONCLUSIVE_INFRA'}], [], None)
 
     def test_exhausted_catalog_stops(self):
-        self.check_dispatch([{'candidate': 'contrast1-fusion', 'status': 'REJECTED_DEV'}], [], None)
+        self.check_dispatch([{'candidate': 'region-crop-retry', 'status': 'REJECTED_DEV'}], [], None)
 
     def test_active_research_prevents_duplicate(self):
         for status in ('queued', 'in_progress', 'waiting', 'requested', 'pending'):
@@ -45,7 +45,7 @@ class ContinueResearchTests(unittest.TestCase):
     def test_finishing_workflow_does_not_block_its_own_successor(self):
         self.check_dispatch([{'candidate': 'contrast1', 'status': 'REJECTED_DEV'},
                              {'candidate': 'sharpen', 'status': 'REJECTED_DEV'}],
-                            ['completed', 'in_progress'], 'contrast1-fusion', current_run_id=101)
+                            ['completed', 'in_progress'], 'region-crop-retry', current_run_id=101)
 
     def test_other_queued_run_still_blocks_successor(self):
         self.check_dispatch([], ['in_progress', 'queued'], None, current_run_id=100)
