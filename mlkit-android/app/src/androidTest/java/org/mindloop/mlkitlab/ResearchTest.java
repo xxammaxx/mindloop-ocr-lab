@@ -15,6 +15,8 @@ import com.google.mlkit.vision.text.TextRecognizer;
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeUnit;
 import org.json.JSONArray;
@@ -54,6 +56,24 @@ public class ResearchTest {
         assertArrayEquals(new byte[]{82,82,82,82,(byte)240,90}, frame);
     }
 
+    @Test public void regionPolicyMapsCropBackWithoutShifting() throws Exception {
+        Rect crop = new Rect(100, 80, 220, 140);
+        assertEquals(new Rect(110, 85, 140, 95),
+            RegionPolicy.toSource(crop, new Rect(20, 10, 80, 30), 2, 500, 500));
+        JSONArray candidates = new JSONArray().put(new JSONObject()
+            .put("text", "K").put("box", new JSONArray(new int[]{105, 90, 115, 110})));
+        Rect selected = RegionPolicy.select(candidates, 500, 500);
+        assertNotNull(selected);
+        assertTrue(selected.contains(105, 90));
+        assertTrue(selected.contains(114, 109));
+    }
+
+    @Test public void regionPolicySkipsConfidentLongLabels() throws Exception {
+        JSONArray ordinary = new JSONArray().put(new JSONObject().put("text", "Abrechnungszeitraum")
+            .put("box", new JSONArray(new int[]{10, 10, 240, 40})));
+        assertNull(RegionPolicy.select(ordinary, 500, 500));
+    }
+
     @Test public void runPairedResearch() throws Exception {
         Context assets = InstrumentationRegistry.getInstrumentation().getContext();
         Context target = InstrumentationRegistry.getInstrumentation().getTargetContext();
@@ -63,6 +83,7 @@ public class ResearchTest {
         }
         assertTrue("empty experiment", index.length() > 0);
         JSONArray rows = new JSONArray();
+        Map<String, JSONObject> baselineRows = new HashMap<>();
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
         try {
             for (int i = 0; i < index.length(); i++) {
@@ -77,6 +98,75 @@ public class ResearchTest {
                 image.getPixels(pixels, 0, w, 0, 0, w, h);
                 image.recycle();
                 for (String pipeline : new String[]{"umliva-nv21", "feldexa-gray-bitmap"}) {
+                    String key = item.getString("id") + "|" + pipeline;
+                    if ("region-v1".equals(item.getString("variant"))) {
+                        JSONObject baseline = baselineRows.get(key);
+                        assertNotNull("candidate must follow measured baseline", baseline);
+                        Rect crop = RegionPolicy.select(baseline.getJSONArray("lines"), w, h);
+                        JSONArray retryLines = new JSONArray();
+                        StringBuilder retryText = new StringBuilder();
+                        long duration = 0;
+                        if (crop != null) {
+                            long started = SystemClock.elapsedRealtime();
+                            int cw = crop.width(), ch = crop.height();
+                            int[] piece = new int[cw * ch];
+                            for (int yy = 0; yy < ch; yy++) {
+                                System.arraycopy(pixels, (crop.top + yy) * w + crop.left,
+                                    piece, yy * cw, cw);
+                            }
+                            Bitmap originalCrop = Bitmap.createBitmap(piece, cw, ch, Bitmap.Config.ARGB_8888);
+                            Bitmap scaled = Bitmap.createScaledBitmap(originalCrop, cw * 2, ch * 2, true);
+                            originalCrop.recycle();
+                            Bitmap grayCrop = null;
+                            try {
+                                int sw = scaled.getWidth(), sh = scaled.getHeight();
+                                int[] zoomPixels = new int[sw * sh];
+                                scaled.getPixels(zoomPixels, 0, sw, 0, 0, sw, sh);
+                                InputImage regional;
+                                if (pipeline.equals("umliva-nv21")) {
+                                    regional = InputImage.fromByteArray(nv21(zoomPixels, sw, sh),
+                                        (sw + 1) & ~1, (sh + 1) & ~1, 0, InputImage.IMAGE_FORMAT_NV21);
+                                } else {
+                                    int[] grays = new int[zoomPixels.length];
+                                    for (int j = 0; j < zoomPixels.length; j++) {
+                                        int c = zoomPixels[j];
+                                        int v = (77 * ((c >> 16) & 255) + 150 * ((c >> 8) & 255)
+                                            + 29 * (c & 255) + 128) >> 8;
+                                        grays[j] = 0xff000000 | (v << 16) | (v << 8) | v;
+                                    }
+                                    grayCrop = Bitmap.createBitmap(grays, sw, sh, Bitmap.Config.ARGB_8888);
+                                    regional = InputImage.fromBitmap(grayCrop, 0);
+                                }
+                                Text retried = Tasks.await(recognizer.process(regional), 30, TimeUnit.SECONDS);
+                                for (Text.TextBlock block : retried.getTextBlocks()) {
+                                    for (Text.Line line : block.getLines()) {
+                                        if (line.getText().trim().isEmpty()) continue;
+                                        Rect local = line.getBoundingBox();
+                                        assertNotNull("regional line must have geometry", local);
+                                        Rect mapped = RegionPolicy.toSource(crop, local, 2, w, h);
+                                        retryLines.put(new JSONObject().put("text", line.getText())
+                                            .put("box", new JSONArray(new int[]{
+                                                mapped.left, mapped.top, mapped.right, mapped.bottom})));
+                                        if (retryText.length() > 0) retryText.append("\n");
+                                        retryText.append(line.getText());
+                                    }
+                                }
+                            } finally {
+                                if (grayCrop != null) grayCrop.recycle();
+                                scaled.recycle();
+                            }
+                            duration = SystemClock.elapsedRealtime() - started;
+                        }
+                        Runtime memory = Runtime.getRuntime();
+                        rows.put(new JSONObject().put("id", item.getString("id"))
+                            .put("variant", item.getString("variant"))
+                            .put("pipeline", pipeline).put("text", retryText.toString())
+                            .put("line_count", retryLines.length()).put("lines", retryLines)
+                            .put("retry_regions", crop == null ? 0 : 1)
+                            .put("heap_used_bytes", memory.totalMemory() - memory.freeMemory())
+                            .put("elapsed_ms", duration).put("status", "ok"));
+                        continue;
+                    }
                     long start = SystemClock.elapsedRealtime();
                     Bitmap gray = null;
                     try {
@@ -102,10 +192,14 @@ public class ResearchTest {
                             lines.put(new JSONObject().put("text", line.getText()).put("box", new JSONArray(new int[]{box.left, box.top, box.right, box.bottom})));
                         }
                         Runtime memory = Runtime.getRuntime();
-                        rows.put(new JSONObject().put("id", item.getString("id")).put("variant", item.getString("variant"))
-                            .put("pipeline", pipeline).put("text", result.getText()).put("line_count", lines.length()).put("lines", lines)
+                        JSONObject record = new JSONObject().put("id", item.getString("id"))
+                            .put("variant", item.getString("variant"))
+                            .put("pipeline", pipeline).put("text", result.getText())
+                            .put("line_count", lines.length()).put("lines", lines)
                             .put("heap_used_bytes", memory.totalMemory()-memory.freeMemory())
-                            .put("elapsed_ms", SystemClock.elapsedRealtime()-start).put("status", "ok"));
+                            .put("elapsed_ms", SystemClock.elapsedRealtime()-start).put("status", "ok");
+                        rows.put(record);
+                        baselineRows.put(key, record);
                     } finally { if (gray != null) gray.recycle(); }
                 }
             }

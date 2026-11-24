@@ -28,7 +28,7 @@ jobs:
         run: |
           candidate=$(python3 mlkit_lab.py pending)
           case "$candidate" in
-            contrast1-fusion) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
+            region-v1) echo "candidate=$candidate" >> "$GITHUB_OUTPUT" ;;
             EXHAUSTED|BLOCKED) echo "$candidate" ;;
             *) exit 1 ;;
           esac

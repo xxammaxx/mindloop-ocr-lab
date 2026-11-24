@@ -20,6 +20,14 @@ class FusionTests(unittest.TestCase):
         self.assertEqual(result['conflicts'], 1)
         self.assertNotIn('18,00', result['text'])
 
+    def test_missing_numeric_value_is_not_automatically_injected(self):
+        first = {'text': 'Name', 'lines': [line('Name', [10, 10, 100, 30])]}
+        second = {'lines': [line('1.800,00', [200, 80, 300, 100])]}
+        result = fuse(first, second)
+        self.assertEqual(result['text'], 'Name')
+        self.assertEqual(result['added_lines'], 0)
+        self.assertEqual(result['conflicts'], 1)
+
     def test_no_duplicate_or_shifted_line(self):
         first = {'text': 'Straße', 'lines': [line('Straße', [10, 10, 80, 30])]}
         result = fuse(first, {'lines': [line('Straße', [11, 32, 81, 52])]})
@@ -36,6 +44,26 @@ class FusionTests(unittest.TestCase):
         rows = [line('Normaler Feldtext', [10, 20*i, 100, 20*i+10]) for i in range(8)]
         self.assertFalse(should_retry({'text': '\n'.join(x['text'] for x in rows), 'lines': rows}))
 
+    def test_regional_retry_preserves_conflicting_amounts(self):
+        truth = [{'id': 'p', 'modality': 'photo', 'fields': ['Betrag 13,00']}]
+        observations = []
+        for path in lab.PIPELINES:
+            baseline = [line('Betrag 13,00', [10, 10, 150, 30])]
+            altered = [line('Betrag 18,00', [10, 10, 150, 30])]
+            for variant, lines, count in [('baseline', baseline, 0),
+                                          ('region-v1', altered, 1)]:
+                observations.append({'id': 'p', 'pipeline': path,
+                    'variant': variant, 'lines': lines, 'text': lines[0]['text'],
+                    'line_count': 1, 'status': 'ok', 'elapsed_ms': 10,
+                    'retry_regions': count, 'heap_used_bytes': 100})
+        result = lab.score_fusion(truth, observations)
+        self.assertTrue(all(x == 'REJECTED_DEV' for x in result['app_statuses'].values()))
+        self.assertEqual([d['conflicts'] for d in result['diagnostics']], [1, 1])
+        self.assertEqual([r['matched'] for r in result['rows'] if r['variant'] == 'region-v1'], [1, 1])
+        observations[1]['retry_regions'] = 2
+        with self.assertRaises(ValueError):
+            lab.score_fusion(truth, observations)
+
     def test_four_feldexa_forms_render_all_thirteen_pages(self):
         cases = list(form_cases(Path('fixtures/feldexa')))
         self.assertEqual(len(cases), 13)
@@ -47,10 +75,10 @@ class FusionTests(unittest.TestCase):
         truth = [{'id': 'p', 'modality': 'feldexa-form', 'fields': ['Name', 'Datum']}]
         rows = []
         for p in lab.PIPELINES:
-            for variant, lines in [('baseline', [line('Name', [10, 10, 80, 30])]), ('contrast1-fusion', [line('Datum', [10, 80, 80, 100])])]:
-                rows.append({'id': 'p', 'pipeline': p, 'variant': variant, 'lines': lines, 'text': lines[0]['text'], 'line_count': 1, 'status': 'ok', 'elapsed_ms': 10, 'heap_used_bytes': 100})
+            for variant, lines in [('baseline', [line('Name', [10, 10, 80, 30])]), ('region-v1', [line('Datum', [10, 80, 80, 100])])]:
+                rows.append({'id': 'p', 'pipeline': p, 'variant': variant, 'lines': lines, 'text': lines[0]['text'], 'line_count': 1, 'status': 'ok', 'elapsed_ms': 10, 'heap_used_bytes': 100, 'retry_regions': 1 if variant == 'region-v1' else 0})
         result = lab.score_fusion(truth, rows)
         self.assertEqual(result['app_statuses']['feldexa-gray-bitmap'], 'LAB_CANDIDATE')
-        self.assertEqual(result['selective_replay']['app_statuses']['feldexa-gray-bitmap'], 'LAB_CANDIDATE')
+        self.assertEqual(result['diagnostics'][0]['retry_regions'], 1)
         self.assertNotIn('Datum', str(result))
         self.assertEqual(result['rows'][1]['elapsed_ms'], 20)

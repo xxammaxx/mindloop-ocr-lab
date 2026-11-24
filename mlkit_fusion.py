@@ -41,6 +41,11 @@ def fuse(first, second):
             if not any(normalized(x['text']) == normalized(line['text']) for x in matches):
                 conflicts += 1  # retain original, no forced correction from correlated evidence
             continue
+        # A new number, date or amount from a correlated retry is not independently
+        # verified. Log ambiguity; never silently inject a competing monetary value.
+        if any(ch.isdigit() for ch in line['text']):
+            conflicts += 1
+            continue
         added.append(line)
     text = first['text']
     if added:
