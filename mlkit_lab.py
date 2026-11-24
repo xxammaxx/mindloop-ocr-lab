@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PIPELINES = ('umliva-nv21', 'feldexa-gray-bitmap')
-CANDIDATES = ('region-v1',)
+CANDIDATES = ('region-v2-small', 'region-v3-short')
 SDK = 'com.google.mlkit:text-recognition:16.0.1'
 
 
@@ -75,14 +75,15 @@ def score(truth, observations, candidate):
     return {'candidate': candidate, 'config': {'preprocess': candidate, 'sdk': SDK, 'max_source_side': 2400}, 'status': 'LAB_CANDIDATE' if 'LAB_CANDIDATE' in statuses.values() else 'REJECTED_DEV', 'app_statuses': statuses, 'rows': rows}
 
 
-def score_fusion(truth, observations):
+def score_fusion(truth, observations, candidate='region-v1'):
     """Score the measured first pass plus at most one actual regional second pass.
 
     Selection and coordinates are produced on-device from baseline geometry only.
     No ground-truth access is allowed during triggering or fusion.
     """
     from mlkit_fusion import fuse
-    candidate = 'region-v1'
+    if candidate not in ('region-v1', *CANDIDATES):
+        raise ValueError('Unknown regional candidate')
     by_key = {(r['pipeline'], r['id'], r['variant']): r for r in observations}
     if len(by_key) != len(observations):
         raise ValueError('Duplicate input to regional fusion')
@@ -109,9 +110,11 @@ def score_fusion(truth, observations):
                             'baseline_heap_snapshot_bytes': before['heap_used_bytes'],
                             'second_heap_snapshot_bytes': r['heap_used_bytes']})
     result = score(truth, full, candidate)
-    result['config'].update(preprocess='region-v1', fusion='spatial-add-only',
+    result['config'].update(preprocess=candidate, fusion='spatial-add-only',
                             max_regional_retries=1, magnification=2,
-                            trigger='first-pass short/replacement-glyph line only')
+                            trigger={'region-v1':'first-pass short/replacement-glyph line only',
+                                     'region-v2-small':'first-pass line height <= 70% of median, at least three lines',
+                                     'region-v3-short':'first-pass line <= 5 code points or replacement glyph'}[candidate])
     result['diagnostics'] = diagnostics
     result['evidence_limit'] = ('Actual bounded emulator crop re-OCR, but not production '
                                 'app acceptance or field geometry/role correctness; '
@@ -132,7 +135,7 @@ def prepare_assets(corpus, assets, truth_path, candidate):
         image.thumbnail((2400, 2400), Image.Resampling.LANCZOS)
         truth.append(case)
         for variant in ('baseline', candidate):
-            out = image if variant == 'baseline' or candidate == 'region-v1' else prepare(image, variant)
+            out = image if variant == 'baseline' or candidate in CANDIDATES else prepare(image, variant)
             filename = f'{case["id"]}-{variant}.png'
             out.save(assets / filename)
             index.append({'id': case['id'], 'variant': variant, 'file': filename})
@@ -189,7 +192,7 @@ def main():
         runtime = json.loads(args.runtime.read_text())
         if runtime['sdk'] != SDK or runtime['api'] != '35' or not runtime['aar_hashes']:
             raise ValueError('Unqualified emulator / ML Kit artifact')
-        record = score_fusion(json.loads(args.truth.read_text()), json.loads(args.observations.read_text()))
+        record = score_fusion(json.loads(args.truth.read_text()), json.loads(args.observations.read_text()), args.candidate)
         record['runtime'] = runtime
     state['records'].append(record)
     state['complete'] = record['status'] != 'INCONCLUSIVE_INFRA' and pending(state['records']) is None
