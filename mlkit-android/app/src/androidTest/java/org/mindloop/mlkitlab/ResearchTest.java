@@ -51,7 +51,18 @@ public class ResearchTest {
         return (long)w*h >= 0.15*Math.min(a.area(),b.area());
     }
 
+    static int[] expandAxisToMinimum(int start, int end, int limit) {
+        if (end-start >= 32) return new int[]{start,end};
+        int missing=32-(end-start);
+        start-=missing/2;
+        end+=missing-missing/2;
+        if (start<0) { end=Math.min(limit,end-start); start=0; }
+        if (end>limit) { start=Math.max(0,start-(end-limit)); end=limit; }
+        return new int[]{start,end};
+    }
+
     static List<Region> retryRegions(JSONArray lines, int width, int height) throws Exception {
+        if (width < 32 || height < 32) throw new IllegalArgumentException("Raster below ML Kit's 32-pixel minimum");
         List<JSONObject> ordered = new ArrayList<>();
         for (int i=0;i<lines.length();i++) ordered.add(lines.getJSONObject(i));
         ordered.sort(Comparator.comparingInt((JSONObject row)->row.optJSONArray("box").optInt(1))
@@ -68,6 +79,9 @@ public class ResearchTest {
             Region region=new Region(Math.max(0,x1-padX),Math.max(0,y1-padY),
                     Math.min(width,x2+padX),Math.min(height,y2+padY));
             if (region.width()<=0 || region.height()<=0) throw new IllegalArgumentException("Retry box outside raster");
+            int[] x=expandAxisToMinimum(region.left,region.right,width);
+            int[] y=expandAxisToMinimum(region.top,region.bottom,height);
+            region=new Region(x[0],y[0],x[1],y[1]);
             boolean duplicate=false;
             for (Region old: regions) if (overlaps(old,region)) { duplicate=true; break; }
             if (!duplicate) regions.add(region);
@@ -228,6 +242,24 @@ public class ResearchTest {
         assertEquals(35,selected.get(0).right);
         assertEquals(33,selected.get(0).bottom);
         assertEquals(215,selected.get(1).bottom);
+        JSONArray tinyEdgeLine=new JSONArray().put(new JSONObject().put("text","?")
+                .put("box",new JSONArray(new int[]{1,1,3,3})));
+        Region expanded=retryRegions(tinyEdgeLine,100,100).get(0);
+        assertEquals(32,expanded.width());
+        assertEquals(32,expanded.height());
+        JSONArray bottomEdgeLine=new JSONArray().put(new JSONObject().put("text","?")
+                .put("box",new JSONArray(new int[]{97,97,99,99})));
+        Region bottomExpanded=retryRegions(bottomEdgeLine,100,100).get(0);
+        assertEquals(32,bottomExpanded.width());
+        assertEquals(32,bottomExpanded.height());
+        assertEquals(100,bottomExpanded.right);
+        assertEquals(100,bottomExpanded.bottom);
+        try {
+            retryRegions(tinyEdgeLine,31,100);
+            fail("a raster below ML Kit's minimum must be rejected");
+        } catch (IllegalArgumentException expected) {
+            assertEquals("Raster below ML Kit's 32-pixel minimum",expected.getMessage());
+        }
         JSONArray mapped=offsetLines(new JSONArray().put(new JSONObject().put("text","Datum")
                 .put("box",new JSONArray(new int[]{2,3,52,44}))),100,200,50,40);
         assertArrayEquals(new int[]{102,203,150,240},new int[]{mapped.getJSONObject(0).getJSONArray("box").getInt(0),
