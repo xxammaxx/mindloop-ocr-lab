@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PIPELINES = ('umliva-nv21', 'feldexa-gray-bitmap')
-CANDIDATES = ('contrast1-fusion',)
+CANDIDATES = ('region-v1',)
 SDK = 'com.google.mlkit:text-recognition:16.0.1'
 
 
@@ -76,37 +76,46 @@ def score(truth, observations, candidate):
 
 
 def score_fusion(truth, observations):
-    from mlkit_fusion import fuse, should_retry
-    candidate = 'contrast1-fusion'
+    """Score the measured first pass plus at most one actual regional second pass.
+
+    Selection and coordinates are produced on-device from baseline geometry only.
+    No ground-truth access is allowed during triggering or fusion.
+    """
+    from mlkit_fusion import fuse
+    candidate = 'region-v1'
     by_key = {(r['pipeline'], r['id'], r['variant']): r for r in observations}
     if len(by_key) != len(observations):
-        raise ValueError('Duplicate input to fusion')
-    # Validate raw measurements first, even though the standalone second pass is not a candidate.
-    score(truth, observations, candidate)
-    full, selective, diagnostics = [], [], []
+        raise ValueError('Duplicate input to regional fusion')
+    full, diagnostics = [], []
     for r in observations:
         if r['variant'] == 'baseline':
             full.append(r)
-            selective.append(r)
             continue
-        before = by_key[r['pipeline'], r['id'], 'baseline']
+        if r['variant'] != candidate or r.get('retry_regions') not in (0, 1):
+            raise ValueError('Invalid or unbounded regional retry measurement')
+        before = by_key.get((r['pipeline'], r['id'], 'baseline'))
+        if before is None or r.get('line_count') != len(r.get('lines', [])):
+            raise ValueError('Missing baseline or malformed regional retry')
+        if r['retry_regions'] == 0 and (r['lines'] or r['text'].strip()):
+            raise ValueError('No-retry observation must not invent lines')
         fused = fuse(before, r)
-        retry = should_retry(before)
-        both = {**r, 'text': fused['text'], 'line_count': before['line_count'] + fused['added_lines'],
-                'elapsed_ms': before['elapsed_ms'] + r['elapsed_ms']}
-        full.append(both)
-        selective.append(both if retry else {**before, 'variant': candidate})
-        diagnostics.append({'pipeline': r['pipeline'], 'id': r['id'], 'retry': retry,
-                            'added_lines': fused['added_lines'], 'conflicts': fused['conflicts'],
+        full.append({**r, 'text': fused['text'],
+                     'line_count': before['line_count'] + fused['added_lines'],
+                     'elapsed_ms': before['elapsed_ms'] + r['elapsed_ms']})
+        diagnostics.append({'pipeline': r['pipeline'], 'id': r['id'],
+                            'retry_regions': r['retry_regions'],
+                            'added_lines': fused['added_lines'],
+                            'conflicts': fused['conflicts'],
                             'baseline_heap_snapshot_bytes': before['heap_used_bytes'],
                             'second_heap_snapshot_bytes': r['heap_used_bytes']})
     result = score(truth, full, candidate)
-    result['config'].update(preprocess='contrast1', fusion='spatial-add-only', passes=2)
+    result['config'].update(preprocess='region-v1', fusion='spatial-add-only',
+                            max_regional_retries=1, magnification=2,
+                            trigger='first-pass short/replacement-glyph line only')
     result['diagnostics'] = diagnostics
-    result['selective_replay'] = score(truth, selective, candidate)
-    result['selective_replay']['config'].update(preprocess='contrast1', fusion='spatial-add-only', passes='conditional replay',
-                                               trigger='at most 4 lines or short/replacement-character line')
-    result['selective_replay']['evidence_limit'] = 'Counterfactual replay of measured passes, not direct adaptive runtime; elapsed_ms is summed OCR time, not end-to-end; heap snapshots not peak.'
+    result['evidence_limit'] = ('Actual bounded emulator crop re-OCR, but not production '
+                                'app acceptance or field geometry/role correctness; '
+                                'elapsed_ms is OCR-only and heap snapshots are not peak RAM.')
     return result
 
 
@@ -123,7 +132,7 @@ def prepare_assets(corpus, assets, truth_path, candidate):
         image.thumbnail((2400, 2400), Image.Resampling.LANCZOS)
         truth.append(case)
         for variant in ('baseline', candidate):
-            out = image if variant == 'baseline' else prepare(image, 'contrast1' if variant == 'contrast1-fusion' else variant)
+            out = image if variant == 'baseline' or candidate == 'region-v1' else prepare(image, variant)
             filename = f'{case["id"]}-{variant}.png'
             out.save(assets / filename)
             index.append({'id': case['id'], 'variant': variant, 'file': filename})
