@@ -147,7 +147,7 @@ public class ResearchTest {
                                         retryLines.put(new JSONObject().put("text", line.getText())
                                             .put("box", new JSONArray(new int[]{
                                                 mapped.left, mapped.top, mapped.right, mapped.bottom})));
-                                        if (retryText.length() > 0) retryText.append("\\n");
+                                        if (retryText.length() > 0) retryText.append("\n");
                                         retryText.append(line.getText());
                                     }
                                 }
