@@ -1,0 +1,46 @@
+name: Validate ML Kit OCR hypothesis PR
+on:
+  pull_request:
+    paths:
+      - 'mlkit_lab.py'
+      - 'mlkit_fusion.py'
+      - 'test_mlkit*.py'
+      - 'mlkit-android/**'
+      - 'fixtures/**'
+      - '.github/workflows/mlkit*.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  host-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Install fixture tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends python3-pil fonts-dejavu-core poppler-utils
+      - name: Verify published fixture checksums
+        run: (cd fixtures && sha256sum -c SHA256SUMS)
+      - name: Run all deterministic regression tests
+        run: /usr/bin/python3 -m unittest -v
+
+  android-compile:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Fetch pinned Gradle 8.13
+        run: |
+          curl --fail --location --max-time 180 --output "$RUNNER_TEMP/gradle.zip" https://services.gradle.org/distributions/gradle-8.13-bin.zip
+          echo "20f1b1176237254a6fc204d8434196fa11a4cfb387567519c61556e8710aed78  $RUNNER_TEMP/gradle.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/gradle.zip" -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.13/bin" >> "$GITHUB_PATH"
+      - name: Compile isolated offline-ML-Kit research APK and instrumented tests
+        run: gradle -p mlkit-android --no-daemon :app:assembleDebug :app:assembleDebugAndroidTest
